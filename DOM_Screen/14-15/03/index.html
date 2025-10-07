@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Решение алгоритмической задачи</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #f0cbdb;
+            margin: 0;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 950px;
+            margin: auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid #ffb6c1;
+        }
+
+        tr:first-child td {
+            background: #e66da9;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        tr:last-child td {
+            background: #ffe4ec;
+            text-align: center;
+            font-size: 14px;
+            color: #444;
+        }
+
+        h3 {
+            margin-top: 0;
+            color: #e2529a;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin: 8px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ff69b4;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+
+        a:hover {
+            background: #ff69b4;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        form ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        form li {
+            margin-bottom: 12px;
+        }
+
+        input,
+        textarea {
+            border: 1px solid #ffb6c1;
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 14px;
+            width: auto;
+        }
+
+        textarea {
+            width: 95%;
+            resize: none;
+        }
+
+        input[type="button"] {
+            background: #ff69b4;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="button"]:hover {
+            background: #d63384;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="2">✨ Решение задачи ✨</td>
+        </tr>
+        <tr>
+            <td width="170" valign="top">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="../01/index.html" target="_blank">✨01</a></li>
+                    <li><a href="../02/index.html" target="_blank">✨02</a></li>
+                    <li><a href="../03/index.html" target="_blank">✨Решение задачи</a></li>
+                </ul>
+            </td>
+            <td width="700">
+                <h3>Решение задачи</h3>
+                <p name="formulation">Выполняются ли неравенства A < B < C или A < B> C и какое именно неравенство
+                        выполняется?</p>
+                <form action="https://www.bing.com/search?" id="UserEnter" name="UserEnter" target="_blank">
+                    <ul>
+                        <li>Для поисковика:<input name="q" value="search"></li>
+                        <li>Формулировка задачи
+                            <br><textarea cols="60" rows="4" id="task"
+                                name="formulation">Выполняются ли неравенства A < B < C или A < B > C и какое именно неравенство выполняется?</textarea>
+                        </li>
+                        <li>a: <input id="a" name="a" type="number" value="5"></li>
+                        <li>b: <input id="b" name="b" type="number" value="20"></li>
+                        <li>c: <input id="c" name="c" type="number" value="40"></li>
+                        <li>Результат решения задачи: <input id="result" name="result" value="не определен"></li>
+                        <li>действие 1: <input id="verify" type="button" value="Проверить"></li>
+                        <li>действие 2: <input id="send" type="button" value="Отправить"></li>
+                    </ul>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">📩 Контакты: sdkharina@edu.hse.ru</td>
+        </tr>
+    </table>
+</body>
+<script src="./js/abc.js"></script>
+
+</html>
