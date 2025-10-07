@@ -1,20 +1,108 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <title>DOM_JS. Считываем информацию из DOM</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #ffe6f2, #ffccf2);
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            border: 1px solid #ffb6c1;
+            padding: 20px 40px;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #d63384;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            color: #d63384;
+            text-align: center;
+            border-bottom: 2px solid #ffb6c1;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        li {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ff69b4;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+
+        a:hover {
+            background: #ff69b4;
+            color: white;
+            transform: scale(1.05);
+        }
+
+
+        p {
+            font-size: 18px;
+            margin: 12px 0;
+        }
+
+        span {
+            color: #ff69b4;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <p>Фамилия: <span>Харина</span></p>
-    <p>Имя: <span>Софья</span></p>
-    <p>Год рождения: <span id="year">2006</span></p>
+    <div class="card" style="margin-right: 10px;">
+        <h3>Навигация</h3>
+        <ul>
+            <li><a href="../01/index.html" target="_blank">✨01</a></li>
+            <li><a href="../02/1415two.html" target="_blank">✨02</a></li>
+            <li><a href="../03/index.html" target="_blank">✨Решение задачи</a></li>
+        </ul>
+    </div>
 
-    <!--
-        document.getElementById("year").innerText
-        -->
+    <div class="card">
+        <h2>🌸 Страницы паспорта 🌸</h2>
 
+        <p>Фамилия: <span>Харина</span></p>
+        <p>Имя: <span>Софья</span></p>
+        <p>Год рождения: <span id="year">2006</span></p>
+
+    </div>
+
+    <img src="./img/Screenshot.png" alt="Screenshot"
+        style="position: absolute; bottom: 0; width: 1180px; border-radius: 10px; border:3px solid #ffffff;">
 </body>
 
 </html>
