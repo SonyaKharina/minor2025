@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<title>Изменяем кириллицу на латиницу по клику</title>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Document</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #ffe6f2, #ffccf2);
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        td[width="170"] {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            border: 1px solid #ffb6c1;
+            padding: 20px;
+            width: 170px;
+            height: fit-content;
+        }
+
+        h3 {
+            color: #d63384;
+            text-align: center;
+            border-bottom: 2px solid #ffb6c1;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        li {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ff69b4;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+
+        a:hover {
+            background: #ff69b4;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        p {
+            font-size: 18px;
+            margin: 12px 0;
+        }
+
+        span {
+            color: #ff69b4;
+            font-weight: bold;
+        }
+
+        #for_click {
+            margin-top: 25px;
+            text-align: center;
+            padding: 10px;
+            border: 2px dashed #ff69b4;
+            border-radius: 10px;
+            background: #fff;
+            font-weight: bold;
+            color: #d63384;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            max-width: 300px;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.2);
+        }
+
+        #for_click:hover {
+            background: #ff69b4;
+            color: #fff;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <td width="170" valign="top">
+        <h3>Навигация</h3>
+        <ul>
+            <li><a href="../01/index.html" target="_blank">✨01</a></li>
+            <li><a href="../02/index.html" target="_blank">✨02</a></li>
+            <li><a href="../03/index.html" target="_blank">✨Решение задачи</a></li>
+        </ul>
+    </td>
+
+    <div>
+        <p id="surname">Фамилия: <span>Харина</span></p>
+        <p id="name">Имя: <span>Софья</span></p>
+        <p id="year">Год рождения: <span>2006</span></p>
+
+        <p id="for_click">Нажмите, чтобы изменить текст</p>
+    </div>
+
+    <script src="./js/click_edit.js"></script>
+
+</body>
+
+</html>
