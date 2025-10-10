@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Оформить заказ — V Diamonds</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: black;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 60px;
+            font-size: 32px;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #d9b88f;
+        }
+
+        /* ===== Navigation ===== */
+        .navigationblock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navigationblock a {
+            position: relative;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .navigationblock a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 1px;
+            background-color: #d9b88f;
+            transition: width 0.3s ease;
+        }
+
+        .navigationblock a:hover::after {
+            width: 100%;
+        }
+
+        .navigationblock a.active {
+            color: #d9b88f;
+            font-weight: bold;
+        }
+
+        form {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 25px rgba(217, 184, 143, 0.15);
+            border-radius: 16px;
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 40px 30px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 18px;
+            color: #d9b88f;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="time"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #222;
+            color: white;
+            font-size: 16px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 8px;
+            accent-color: #d9b88f;
+        }
+
+        input[type="submit"] {
+            background: #d9b88f;
+            color: black;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="submit"]:hover {
+            background: #bfa06f;
+            box-shadow: 0 0 10px rgba(217, 184, 143, 0.4);
+        }
+
+        .contacts {
+            margin-top: 100px;
+            padding: 60px 20px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.05), transparent);
+        }
+
+        .contacts h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .contact-item {
+            font-size: 18px;
+            margin: 12px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item a {
+            color: #d9b88f;
+        }
+
+        .contact-item a:hover {
+            color: #d9b88f;
+        }
+
+        .contact-icon {
+            font-size: 20px;
+            color: #d9b88f;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        form,
+        h1,
+        .contacts {
+            animation: fadeInUp 2s ease both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navigationblock">
+        <a href="./MainPage.html">Главная</a>
+        <a href="./catalogue.html">Каталог</a>
+        <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BD%D1%82%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%B0%D0%BB%D0%BC%D0%B0%D0%B7%D1%8B"
+            target="_blank">Выращенные бриллианты</a>
+        <a href="./about us.html">О нас</a>
+        <a href="./order.html" class="active">Оформить заказ</a>
+        <a href="#contacts">Контакты</a>
+        <a href="./table.html">IGI сертификация</a>
+
+    </nav>
+
+    <h1>Оформление заказа</h1>
+
+    <form action="https://www.bing.com/search?" method="get" target="_blank" id="OrderForm" name="OrderForm">
+        <input type="hidden" name="q" value="search">
+
+        <input type="hidden" name="order_id" value="VDIAMONDS-001">
+
+        <label>Фамилия:</label>
+        <input type="text" name="surname" value="Петрова">
+
+        <label>Имя:</label>
+        <input type="text" name="name" value="Виктория">
+
+        <label>Выберите изделие:</label>
+        <input type="radio" name="product" value="Кольцо с изумрудом" checked> Кольцо с изумрудом
+        <input type="radio" name="product" value="Кольцо с морганитом"> Кольцо с морганитом
+        <input type="radio" name="product" value="Подвеска с рубином"> Подвеска с рубином
+        <input type="radio" name="product" value="Кольцо с изумрудом"> Теннисный браслет
+        <input type="radio" name="product" value="Кольцо с изумрудом"> Серьги с жёлтыми бриллиантами
+        <input type="radio" name="product" value="Кольцо с изумрудом"> Другое
+        <input type="text" name="other_product" placeholder="Предложите ваше изделие">
+
+        <label>Количество (шт.):</label>
+        <input type="number" name="quantity" min="1" max="10" value="1">
+
+        <label>Металл оправы:</label>
+        <input type="radio" name="metal" value="Белое золото" checked> Белое золото
+        <input type="radio" name="metal" value="Жёлтое золото"> Жёлтое золото
+        <input type="radio" name="metal" value="Платина"> Платина
+
+        <label>Дополнительно:</label>
+        <input type="checkbox" name="gift_pack" value="Да" checked> Подарочная упаковка
+        <input type="checkbox" name="engraving" value="Да"> Гравировка
+
+        <label>Телефон:</label>
+        <input type="tel" name="phone" value="+7-999-999-99-00">
+
+        <label>Email:</label>
+        <input type="email" name="email" value="vdiamonds@mail.ru">
+
+        <label>Дата доставки:</label>
+        <input type="date" name="delivery_date" value="2025-10-09">
+
+        <label>время доставки:</label>
+        <input type="time" name="delivery_time" value="19:00">
+
+        <label>Пароль для подтверждения:</label>
+        <input type="password" name="confirm_password" value="12345">
+
+        <label>Комментарий к заказу:</label>
+        <textarea name="comment" rows="4" cols="50">Хочу индивидуальную гравировку с инициалами.</textarea>
+
+        <input type="submit" value="Оформить заказ">
+    </form>
+
+    <section class="contacts" id="contacts">
+        <h1>Контакты</h1>
+        <div class="contact-item">
+            <a href="https://t.me/Vdiamondsss" target="_blank">Telegram</a>
+        </div>
+        <div class="contact-item">+7 (999) 999-99-99</div>
+        <div class="contact-item">vdiamonds@mail.ru</div>
+        <div class="contact-item">г. Москва, ул. Примерная, д.1</div>
+        <div class="contact-item"><a href="./Form.html">Оставить заявку</a></div>
+    </section>
+
+</body>
+
+</html>
