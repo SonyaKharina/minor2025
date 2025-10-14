@@ -12,7 +12,12 @@
             padding: 0;
             color: white;
             text-align: center;
-            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        p {
+            margin: 0;
         }
 
         a {
@@ -25,11 +30,14 @@
             color: #d9b88f;
         }
 
-        h1,
-        h2 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            color: #d9b88f;
+        .logo {
+            padding-top: 120px;
+        }
+
+        #undertitle {
+            font-size: 20px;
+            color: #dcdcdc;
+            margin-top: 10px;
             letter-spacing: 1px;
         }
 
@@ -38,21 +46,17 @@
             justify-content: center;
             align-items: center;
             gap: 40px;
+            margin-top: 50px;
             padding: 15px 0;
-            background: rgba(255, 255, 255, 0.05);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(6px);
-            position: sticky;
-            top: 0;
-            z-index: 10;
         }
 
         .navigationblock a {
             position: relative;
             font-size: 18px;
             letter-spacing: 0.5px;
-            transition: color 0.3s ease;
         }
 
         .navigationblock a::after {
@@ -75,7 +79,6 @@
             font-weight: bold;
         }
 
-
         .logo {
             display: flex;
             justify-content: center;
@@ -83,6 +86,10 @@
             flex-wrap: wrap;
             padding: 80px 10%;
             gap: 60px;
+        }
+
+        .Vlogo {
+            padding-top: 120px;
         }
 
         .text {
@@ -115,6 +122,72 @@
 
         .highlights p:hover {
             color: #d9b88f;
+            cursor: default;
+        }
+
+        /*         numbered list
+ */
+        .list-section {
+            width: 80%;
+            max-width: 900px;
+            margin: 120px auto;
+            text-align: left;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 0 25px rgba(176, 233, 255, 0.1);
+        }
+
+        .list-section h2 {
+            text-align: center;
+            color: #d9b88f;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .list-section ol {
+            counter-reset: customlist;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .list-section ol li {
+            counter-increment: customlist;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 45px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .list-section ol li::before {
+            content: counter(customlist) ".";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #d9b88f;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .list-section ul {
+            list-style-type: "✨ ";
+            margin-top: 10px;
+            margin-left: 40px;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .list-section ul li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .list-section ul li:hover {
+            color: #d9b88f;
+            transition: color 0.3s ease;
             cursor: default;
         }
 
@@ -167,24 +240,32 @@
 
         .text,
         .image,
-        .contacts {
+        .contacts,
+        .list-section {
             animation: fadeInUp 2s ease both;
         }
     </style>
 </head>
 
 <body>
+    <div class="Vlogo">
+        <a href="https://t.me/Vdiamondsss"><img src="./imgs/VDIAMONDS.png" style="max-width: 300px;"></a>
+        <p id="undertitle">Изысканные украшения с выращенными бриллиантами</p>
+    </div>
 
     <nav class="navigationblock">
+        <a href="./imgs/img2.jpg" target="_blank"><img src="./imgs/diamond1.png" class="navLogo"
+                style="max-width: 20px;"></a>
         <a href="./MainPage.html">Главная</a>
         <a href="./catalogue.html">Каталог</a>
-        <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BD%D1%82%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%B0%D0%BB%D0%BC%D0%B0%D0%B7%D1%8B"
+        <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BD%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%B0%D0%BB%D0%BC%D0%B0%D0%B7%D1%8B"
             target="_blank">Выращенные бриллианты</a>
         <a href="./about us.html" class="active">О нас</a>
         <a href="./order.html">Оформить заказ</a>
         <a href="#contacts">Контакты</a>
         <a href="./table.html">IGI сертификация</a>
-
+        <a href="./imgs/img2.jpg" target="_blank"><img src="./imgs/diamond1.png" class="navLogo"
+                style="max-width: 20px;"></a>
     </nav>
 
     <section class="logo">
@@ -209,7 +290,38 @@
             <img src="./imgs/WhatIsV.png" alt="VDiamonds">
         </div>
     </section>
-    <div class="text" style="max-width: 800px; margin: auto; margin-top: 400px;">
+
+    <section class="list-section">
+        <h2>Этапы создания украшения</h2>
+        <ol>
+            <li>Обсуждение идеи
+                <ul>
+                    <li>Вы рассказываете о своём вдохновении и желаемом стиле.</li>
+                    <li>Мы подбираем камни и материалы в соответствии с вашим видением.</li>
+                </ul>
+            </li>
+            <li>Создание дизайна
+                <ul>
+                    <li>Наши специалисты разрабатывают эскиз и 3D-модель изделия.</li>
+                    <li>Вы утверждаете дизайн перед началом изготовления.</li>
+                </ul>
+            </li>
+            <li>Изготовление украшения
+                <ul>
+                    <li>Украшение создаётся вручную в ювелирной мастерской.</li>
+                    <li>Каждый камень проходит сертификацию IGI.</li>
+                </ul>
+            </li>
+            <li>Упаковка и доставка
+                <ul>
+                    <li>Готовое изделие помещается в фирменную коробку.</li>
+                    <li>Доставка осуществляется по России и за её пределы.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <div class="text" style="max-width: 800px; margin: auto; margin-top: 50px;">
         <p><span>V. Diamonds — это не просто украшения, это отражение Ваших ценностей и стиля жизни.</span></p>
     </div>
 
@@ -231,7 +343,7 @@
             <span class="contact-icon"></span> vdiamonds@mail.ru
         </div>
         <div class="contact-item">
-            <span class="contact-icon"></span> г. Москва, ул. Примерная, д.1
+            <span class="contact-icon"></span> г. Москва, Последний переулок, д.1
         </div>
         <div class="contact-item">
             <span class="contact-icon"></span>
