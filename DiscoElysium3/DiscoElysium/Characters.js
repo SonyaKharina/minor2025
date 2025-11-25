@@ -5,7 +5,7 @@ async function getCharacters() {
                 id: 1,
                 name: "Harry Du Bois",
                 description: "A detective with amnesia, trying to solve a murder while piecing together his own identity.",
-                portrait: "https://static.wikia.nocookie.net/discoelysium_gamepedia_en/images/8/83/Portrait_you.png/revision/latest?cb=20191028100206"
+                portrait: "./images/Portrait_You.jpg"
             },
             {
                 id: 2,
