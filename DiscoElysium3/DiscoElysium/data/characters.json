@@ -1,6 +1,6 @@
 {
     "characters": [
-                {
+        {
             "id": 1,
             "name": "Harry Du Bois",
             "description": "A detective with amnesia, trying to solve a murder while piecing together his own identity.",
@@ -71,6 +71,6 @@
             "name": "Lena",
             "description": "An elderly woman with a passion for cryptids and the supernatural.",
             "portrait": "./images/lena.png"
-        },
+        }
     ]
 }
