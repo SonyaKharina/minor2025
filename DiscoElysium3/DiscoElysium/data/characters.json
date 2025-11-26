@@ -1,5 +1,5 @@
 {
-    "characters": [
+    "characters": 
         {
             "id": 1,
             "name": "Harry Du Bois",
@@ -72,5 +72,4 @@
             "description": "An elderly woman with a passion for cryptids and the supernatural.",
             "portrait": "./images/lena.png"
         }
-    ]
 }
