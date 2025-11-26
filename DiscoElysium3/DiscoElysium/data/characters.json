@@ -4,7 +4,7 @@
             "id": 1,
             "name": "Harry Du Bois",
             "description": "A detective with amnesia, trying to solve a murder while piecing together his own identity.",
-            "portrait": "./images/characters/harry.jpg"
+            "portrait": "../images/characters/harry.jpg"
         },
         {
             "id": 2,
