@@ -1,36 +1,26 @@
-async function getCharacters() {
-    try {
-        let response = await fetch("./data/characters.json");
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        let content = await response.json();
-        const charactersData = content.characters;
+async function getResponse() {
+    let response = await fetch("./data/characters.json")
+    let content = await response.text()
+    console.log(content)
+    content = JSON.parse(content)
+    content = content.characters
+    console.log(content)
 
-        console.log("Loaded characters:", charactersData);
+    let key
+    for (key in content) {
+        console.log(content[key].id, content[key].name)
+        console.log(content[key])
+    }
 
-        let container = document.getElementById("characters-container");
-
-        charactersData.forEach((character, index) => {
-            const card = document.createElement("div");
-            card.className = "character-card";
-
-            card.innerHTML = `
-                <img class="character-portrait" src="${character.portrait}" alt="${character.name}" onerror="this.src='./images/placeholder.jpg'">
-                <div class="character-name">${character.name}</div>
-                <div class="character-description">${character.description}</div>
-            `;
-
-            container.appendChild(card);
-        });
-
-    } catch (error) {
-        console.error("Error loading characters:", error);
-        document.getElementById("characters-container").innerHTML =
-            "<p style='text-align: center; color: #ff9b53;'>Failed to load characters. Please try again later.</p>";
+    let node_for_insert = document.getElementById("characters-container")
+    for (key in content) {
+        node_for_insert.innerHTML += `
+        <div class="character-card">
+            <img class="character-portrait" src="${content[key].img}" alt="${content[key].name}">
+            <div class="character-name">${content[key].name}</div>
+            <div class="character-description">${content[key].description}</div>
+        </div>
+        `
     }
 }
-
-document.addEventListener('DOMContentLoaded', getCharacters);
+getResponse()
