@@ -4,7 +4,7 @@ async function getResponse() {
             id: 1,
             name: "Harry Du Bois",
             description: "A detective with amnesia, trying to solve a murder while piecing together his own identity.",
-            img: "https://static.wikia.nocookie.net/discoelysium_gamepedia_en/images/8/83/Portrait_you.png/revision/latest?cb=20191028100206"
+            img: "minor2025/DiscoElysium3/DiscoElysium/images/harry.png"
         },
         {
             id: 2,
