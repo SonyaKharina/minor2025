@@ -1,75 +1,76 @@
 {
-    "characters": 
+    "characters": [
         {
             "id": 1,
             "name": "Harry Du Bois",
             "description": "A detective with amnesia, trying to solve a murder while piecing together his own identity.",
-            "portrait": "./images/harry.png"
+            "img": "./images/harry.png"
         },
         {
             "id": 2,
             "name": "Kim Kitsuragi",
             "description": "A precise and methodical lieutenant from the 41st precinct, your partner in the investigation.",
-            "portrait": "./images/kim.png"
+            "img": "./images/kim.png"
         },
         {
             "id": 3,
             "name": "Cuno",
             "description": "A foul-mouthed street kid who becomes an unlikely ally in your investigation.",
-            "portrait": "./images/cuno.png"
+            "img": "./images/cuno.png"
         },
         {
             "id": 4,
             "name": "Joyce Messier",
             "description": "A representative of the Wild Pines Group with crucial information about the case.",
-            "portrait": "./images/joyce.png"
+            "img": "./images/joyce.png"
         },
         {
             "id": 5,
             "name": "Titus Hardie",
             "description": "Leader of the Hardie Boys, a local dockworkers' union with secrets to hide.",
-            "portrait": "./images/titus.png"
+            "img": "./images/titus.png"
         },
         {
             "id": 6,
             "name": "Evrart Claire",
             "description": "A charismatic and manipulative union leader with his own agenda.",
-            "portrait": "./images/evrart.png"
+            "img": "./images/evrart.png"
         },
         {
             "id": 7,
             "name": "Klaasje",
             "description": "A mysterious woman staying at the Whirling-in-Rags with connections to the victim.",
-            "portrait": "./images/klaasje.png"
+            "img": "./images/klaasje.png"
         },
         {
             "id": 8,
             "name": "The Smoker on the Balcony",
             "description": "A philosophical smoker who provides unexpected insights into the nature of reality.",
-            "portrait": "./images/smoker.png"
+            "img": "./images/smoker.png"
         },
         {
             "id": 9,
             "name": "Garte",
             "description": "The manager of Whirling-in-Rags, trying to keep his establishment running amidst chaos.",
-            "portrait": "./images/garte.png"
+            "img": "./images/garte.png"
         },
         {
             "id": 10,
             "name": "Ruby",
             "description": "A hardened mercenary with crucial knowledge about the case's darker aspects.",
-            "portrait": "./images/ruby.png"
+            "img": "./images/ruby.png"
         },
         {
             "id": 11,
             "name": "Measurehead",
             "description": "A racist dockworker obsessed with phrenology and racial purity.",
-            "portrait": "./images/measurehead.png"
+            "img": "./images/measurehead.png"
         },
         {
             "id": 12,
             "name": "Lena",
             "description": "An elderly woman with a passion for cryptids and the supernatural.",
-            "portrait": "./images/lena.png"
+            "img": "./images/lena.png"
         }
+    ]
 }
