@@ -1403,6 +1403,68 @@
     </div>
 
   </div>
+      <!-- QUIZ for excursion2.html -->
+    <div class="quiz-container" style="margin: 3rem 0 2rem 0; padding: 2rem; background: var(--parchment); border-left: 3px solid var(--gold);">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">Проверьте себя</h3>
+      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 1.5rem;">Что вы запомнили из экскурсии «Природа Западной Сибири под давлением»?</p>
+
+      <div class="quiz-question" data-correct="2">
+        <p class="quiz-question-text"><strong>1.</strong> Сколько гектаров земли в ХМАО загрязнено нефтью и нефтепродуктами (по экспертным оценкам)?</p>
+        <label><input type="radio" name="q1" value="1"> Около 1 000 га</label><br>
+        <label><input type="radio" name="q2" value="2"> Более 3 000 га</label><br>
+        <label><input type="radio" name="q3" value="3"> Менее 500 га</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="1">
+        <p class="quiz-question-text"><strong>2.</strong> Какое уникальное болото названо «одним из величайших болот мира» и хранит около 18,8 гигатонн углерода?</p>
+        <label><input type="radio" name="q2" value="1"> Васюганское болото</label><br>
+        <label><input type="radio" name="q2" value="2"> Васнецовское болото</label><br>
+        <label><input type="radio" name="q2" value="3"> Сибирское болото</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="3">
+        <p class="quiz-question-text"><strong>3.</strong> Какое животное особенно пострадало от уничтожения ягельных боров и фактора беспокойства со стороны нефтяной инфраструктуры?</p>
+        <label><input type="radio" name="q3" value="1"> Сибирский осётр</label><br>
+        <label><input type="radio" name="q3" value="2"> Муксу́н</label><br>
+        <label><input type="radio" name="q3" value="3"> Северный олень</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <button class="check-quiz-btn" style="margin-top: 1.5rem; background: var(--gold); border: none; padding: 0.5rem 1.5rem; font-family: 'Raleway', sans-serif; font-weight: bold; cursor: pointer;">Проверить ответы</button>
+    </div>
+
+    <script>
+      (function() {
+        const container = document.querySelector('.quiz-container');
+        if (!container) return;
+        const btn = container.querySelector('.check-quiz-btn');
+        btn.addEventListener('click', function() {
+          const questions = container.querySelectorAll('.quiz-question');
+          let score = 0;
+          questions.forEach((q, idx) => {
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const correctVal = q.getAttribute('data-correct');
+            const explDiv = q.querySelector('.quiz-explanation');
+            let isCorrect = false;
+            if (selected && selected.value === correctVal) {
+              isCorrect = true;
+              score++;
+            }
+            if (idx === 0) {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! Площадь загрязнённых земель в ХМАО превышает 3 тыс. га (около 420 футбольных полей).' : '✗ Неверно. В тексте указано более 3 тысяч гектаров.';
+            } else if (idx === 1) {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! Васюганское болото – крупнейшая болотная экосистема, гигантский углеродный резервуар.' : '✗ Неверно. Правильное название – Васюганское болото.';
+            } else {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! Северный олень теряет пастбища из-за нефтепромыслов, его вес упал с 60 до 40 кг.' : '✗ Неверно. В тексте говорится о северном олене и ягельных борах.';
+            }
+            explDiv.style.display = 'block';
+          });
+          alert(`Вы ответили правильно на ${score} из 3 вопросов.`);
+        });
+      })();
+    </script>
 
   <div class="sources-section">
     <div class="sources-title">Список использованных источников</div>
