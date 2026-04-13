@@ -1301,6 +1301,68 @@
       народы Западной Сибири не исчезли. Они адаптируются, защищают свои земли и учат мир устойчивому сосуществованию с
       природой.
     </div>
+          <!-- QUIZ for excursion3.html -->
+    <div class="quiz-container" style="margin: 3rem 0 2rem 0; padding: 2rem; background: var(--parchment); border-left: 3px solid var(--gold);">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">Проверьте себя</h3>
+      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 1.5rem;">Что вы запомнили из экскурсии «Этнокультурное наследие»?</p>
+
+      <div class="quiz-question" data-correct="2">
+        <p class="quiz-question-text"><strong>1.</strong> Какой традиционный промысел является основным для ненцев (согласно тексту экскурсии)?</p>
+        <label><input type="radio" name="q1" value="1"> Речное рыболовство</label><br>
+        <label><input type="radio" name="q2" value="2"> Оленеводство</label><br>
+        <label><input type="radio" name="q3" value="3"> Охота на пушного зверя</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="1">
+        <p class="quiz-question-text"><strong>2.</strong> Какое последствие промышленного освоения особенно сильно повлияло на традиционные маршруты оленеводов?</p>
+        <label><input type="radio" name="q2" value="1"> Строительство дорог, ЛЭП и нефтяных посёлков</label><br>
+        <label><input type="radio" name="q2" value="2"> Запрет на кочевой образ жизни</label><br>
+        <label><input type="radio" name="q2" value="3"> Полная ликвидация оленьих стад</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="3">
+        <p class="quiz-question-text"><strong>3.</strong> Что из перечисленного помогло в возрождении языков ханты, манси и ненцев в 2010‑е годы?</p>
+        <label><input type="radio" name="q3" value="1"> Запрет на русский язык в школах</label><br>
+        <label><input type="radio" name="q3" value="2"> Переселение всех народов в города</label><br>
+        <label><input type="radio" name="q3" value="3"> Цифровые словари, мобильные приложения, YouTube‑каналы</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <button class="check-quiz-btn" style="margin-top: 1.5rem; background: var(--gold); border: none; padding: 0.5rem 1.5rem; font-family: 'Raleway', sans-serif; font-weight: bold; cursor: pointer;">Проверить ответы</button>
+    </div>
+
+    <script>
+      (function() {
+        const container = document.querySelector('.quiz-container');
+        if (!container) return;
+        const btn = container.querySelector('.check-quiz-btn');
+        btn.addEventListener('click', function() {
+          const questions = container.querySelectorAll('.quiz-question');
+          let score = 0;
+          questions.forEach((q, idx) => {
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const correctVal = q.getAttribute('data-correct');
+            const explDiv = q.querySelector('.quiz-explanation');
+            let isCorrect = false;
+            if (selected && selected.value === correctVal) {
+              isCorrect = true;
+              score++;
+            }
+            if (idx === 0) {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! Ненцы исторически специализировались на оленеводстве (в тексте – «основной промысел»).' : '✗ Неверно. В экскурсии сказано: «ненцы — на оленеводстве».';
+            } else if (idx === 1) {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! Дороги, ЛЭП и посёлки нарушили маршруты кочевий, оленеводы смещали пути на 50–100 км.' : '✗ Неверно. Инфраструктура нефтедобычи – главная причина изменения ландшафта.';
+            } else {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! В 2010‑е появились цифровые словари, приложения, подкасты и каналы на национальных языках.' : '✗ Неверно. В тексте прямо упоминаются цифровые технологии как инструмент возрождения языка.';
+            }
+            explDiv.style.display = 'block';
+          });
+          alert(`Вы ответили правильно на ${score} из 3 вопросов.`);
+        });
+      })();
+    </script>
   </div>
   <div class="sources-section">
     <div class="sources-title">Список использованных источников</div>
@@ -1479,69 +1541,6 @@
       <a class="footer-link" href="index.html" style="text-decoration:none;">Главная</a>
     </div>
   </footer>
-      <!-- QUIZ for excursion3.html -->
-    <div class="quiz-container" style="margin: 3rem 0 2rem 0; padding: 2rem; background: var(--parchment); border-left: 3px solid var(--gold);">
-      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">Проверьте себя</h3>
-      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 1.5rem;">Что вы запомнили из экскурсии «Этнокультурное наследие»?</p>
-
-      <div class="quiz-question" data-correct="2">
-        <p class="quiz-question-text"><strong>1.</strong> Какой традиционный промысел является основным для ненцев (согласно тексту экскурсии)?</p>
-        <label><input type="radio" name="q1" value="1"> Речное рыболовство</label><br>
-        <label><input type="radio" name="q2" value="2"> Оленеводство</label><br>
-        <label><input type="radio" name="q3" value="3"> Охота на пушного зверя</label>
-        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <p class="quiz-question-text"><strong>2.</strong> Какое последствие промышленного освоения особенно сильно повлияло на традиционные маршруты оленеводов?</p>
-        <label><input type="radio" name="q2" value="1"> Строительство дорог, ЛЭП и нефтяных посёлков</label><br>
-        <label><input type="radio" name="q2" value="2"> Запрет на кочевой образ жизни</label><br>
-        <label><input type="radio" name="q2" value="3"> Полная ликвидация оленьих стад</label>
-        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <p class="quiz-question-text"><strong>3.</strong> Что из перечисленного помогло в возрождении языков ханты, манси и ненцев в 2010‑е годы?</p>
-        <label><input type="radio" name="q3" value="1"> Запрет на русский язык в школах</label><br>
-        <label><input type="radio" name="q3" value="2"> Переселение всех народов в города</label><br>
-        <label><input type="radio" name="q3" value="3"> Цифровые словари, мобильные приложения, YouTube‑каналы</label>
-        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
-      </div>
-
-      <button class="check-quiz-btn" style="margin-top: 1.5rem; background: var(--gold); border: none; padding: 0.5rem 1.5rem; font-family: 'Raleway', sans-serif; font-weight: bold; cursor: pointer;">Проверить ответы</button>
-    </div>
-
-    <script>
-      (function() {
-        const container = document.querySelector('.quiz-container');
-        if (!container) return;
-        const btn = container.querySelector('.check-quiz-btn');
-        btn.addEventListener('click', function() {
-          const questions = container.querySelectorAll('.quiz-question');
-          let score = 0;
-          questions.forEach((q, idx) => {
-            const selected = q.querySelector('input[type="radio"]:checked');
-            const correctVal = q.getAttribute('data-correct');
-            const explDiv = q.querySelector('.quiz-explanation');
-            let isCorrect = false;
-            if (selected && selected.value === correctVal) {
-              isCorrect = true;
-              score++;
-            }
-            if (idx === 0) {
-              explDiv.innerHTML = isCorrect ? '✓ Верно! Ненцы исторически специализировались на оленеводстве (в тексте – «основной промысел»).' : '✗ Неверно. В экскурсии сказано: «ненцы — на оленеводстве».';
-            } else if (idx === 1) {
-              explDiv.innerHTML = isCorrect ? '✓ Верно! Дороги, ЛЭП и посёлки нарушили маршруты кочевий, оленеводы смещали пути на 50–100 км.' : '✗ Неверно. Инфраструктура нефтедобычи – главная причина изменения ландшафта.';
-            } else {
-              explDiv.innerHTML = isCorrect ? '✓ Верно! В 2010‑е появились цифровые словари, приложения, подкасты и каналы на национальных языках.' : '✗ Неверно. В тексте прямо упоминаются цифровые технологии как инструмент возрождения языка.';
-            }
-            explDiv.style.display = 'block';
-          });
-          alert(`Вы ответили правильно на ${score} из 3 вопросов.`);
-        });
-      })();
-    </script>
-
 
   <script>
     (function () {
