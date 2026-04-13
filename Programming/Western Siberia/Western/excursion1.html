@@ -1275,6 +1275,70 @@
         style="width:100%;border-radius:4px;margin:1.5rem 0;">
     </div>
 
+        <!-- QUIZ for excursion1.html -->
+    <div class="quiz-container" style="margin: 3rem 0 2rem 0; padding: 2rem; background: var(--parchment); border-left: 3px solid var(--gold);">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">Проверьте себя</h3>
+      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 1.5rem;">Что вы запомнили из экскурсии «Нефть и власть»?</p>
+
+      <div class="quiz-question" data-correct="2">
+        <p class="quiz-question-text"><strong>1.</strong> Какая основная причина падения добычи нефти в Западной Сибири в первой половине 1990‑х годов?</p>
+        <label><input type="radio" name="q1" value="1"> Отсутствие новых месторождений</label><br>
+        <label><input type="radio" name="q1" value="2"> Распад СССР и экономический кризис, высокие налоги</label><br>
+        <label><input type="radio" name="q1" value="3"> Всемирный мораторий на нефтедобычу</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="3">
+        <p class="quiz-question-text"><strong>2.</strong> Какой из городов нефтяного бума был назван в экскурсии как «опорная территория для проектов модернизации добычи, транспорта и переработки газа» в 2000–2010‑е годы?</p>
+        <label><input type="radio" name="q2" value="1"> Сургут</label><br>
+        <label><input type="radio" name="q2" value="2"> Нижневартовск</label><br>
+        <label><input type="radio" name="q2" value="3"> Новый Уренгой</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="1">
+        <p class="quiz-question-text"><strong>3.</strong> Какую долю российской нефтедобычи обеспечивает Западная Сибирь по данным на 2025 год (согласно тексту экскурсии)?</p>
+        <label><input type="radio" name="q3" value="1"> Около 70%</label><br>
+        <label><input type="radio" name="q3" value="2"> Около 50%</label><br>
+        <label><input type="radio" name="q3" value="3"> Около 90%</label>
+        <div class="quiz-explanation" style="display:none; margin-top:0.5rem; font-size:0.9rem; color: var(--gold-dark);"></div>
+      </div>
+
+      <button class="check-quiz-btn" style="margin-top: 1.5rem; background: var(--gold); border: none; padding: 0.5rem 1.5rem; font-family: 'Raleway', sans-serif; font-weight: bold; cursor: pointer;">Проверить ответы</button>
+    </div>
+
+    <script>
+      (function() {
+        const container = document.querySelector('.quiz-container');
+        if (!container) return;
+        const btn = container.querySelector('.check-quiz-btn');
+        btn.addEventListener('click', function() {
+          const questions = container.querySelectorAll('.quiz-question');
+          let score = 0;
+          questions.forEach((q, idx) => {
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const correctVal = q.getAttribute('data-correct');
+            const explDiv = q.querySelector('.quiz-explanation');
+            let isCorrect = false;
+            if (selected && selected.value === correctVal) {
+              isCorrect = true;
+              score++;
+            }
+            // Explanation texts
+            if (idx === 0) {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! Распад СССР, кризис 1990-х и налоги до 75% привели к падению добычи с 399 до 307 млн тонн.' : '✗ Неверно. Правильный ответ: распад СССР и экономический кризис (высокие налоги, сокращение бурения).';
+            } else if (idx === 1) {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! Новый Уренгой стал опорной территорией для модернизации газодобычи.' : '✗ Неверно. Новый Уренгой – газодобывающий центр, описанный в экскурсии.';
+            } else {
+              explDiv.innerHTML = isCorrect ? '✓ Верно! На Западную Сибирь приходится около 70% российской нефтедобычи.' : '✗ Неверно. В тексте указано: около 70% российской нефтедобычи.';
+            }
+            explDiv.style.display = 'block';
+          });
+          alert(`Вы ответили правильно на ${score} из 3 вопросов.`);
+        });
+      })();
+    </script>
+
     <div class="sources-section">
       <div class="sources-title">Список использованных источников</div>
       <div class="sources-list">
