@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Экскурсия I — Нефть и власть: экономическое чудо Западной Сибири</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-dark: #8B6914;
+      --ink: #1A1208;
+      --cream: #F5F0E8;
+      --parchment: #EDE4D0;
+      --steel: #2C3E50;
+      --birch: #F8F4EC;
+      --taiga: #2D4A3E;
+      --snow: #FAFAF8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--birch);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ─── PAGE SYSTEM ─── */
+    .page {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(26, 18, 8, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gold-dark);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      line-height: 1.2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .nav-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: rgba(201, 168, 76, 0.7);
+      text-transform: uppercase;
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      background: none;
+      border-radius: 2px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold);
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0d0d08 0%, #1a1810 40%, #2d2418 70%, #1a1208 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-ornament {
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5em;
+      animation: fadeSlideDown 1.2s ease both;
+    }
+
+    .hero-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: rgba(201, 168, 76, 0.6);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeSlideDown 1.2s 0.1s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.05;
+      animation: fadeSlideDown 1.2s 0.2s ease both;
+    }
+
+    .hero-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245, 240, 232, 0.65);
+      margin-top: 1.5rem;
+      max-width: 600px;
+      line-height: 1.6;
+      animation: fadeSlideDown 1.2s 0.35s ease both;
+    }
+
+    .hero-divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 2.5rem auto;
+      animation: fadeIn 1.5s 0.5s ease both;
+    }
+
+    .hero-dates {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      opacity: 0.8;
+      letter-spacing: 0.1em;
+      animation: fadeIn 1.5s 0.6s ease both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(201, 168, 76, 0.5);
+      text-transform: uppercase;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── SECTION ─── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title em {
+      color: var(--gold-dark);
+      font-style: italic;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    p.body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.85;
+      color: #2a1f10;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── ALTERNATING BAND ─── */
+    .band {
+      background: var(--parchment);
+    }
+
+    .band-dark {
+      background: var(--taiga);
+    }
+
+    .band-dark .section-label {
+      color: rgba(201, 168, 76, 0.6);
+    }
+
+    .band-dark .section-title {
+      color: var(--cream);
+    }
+
+    .band-dark .section-title em {
+      color: var(--gold-light);
+    }
+
+    .band-dark p.body-text {
+      color: rgba(245, 240, 232, 0.8);
+    }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: var(--ink);
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 180px;
+      max-width: 240px;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--gold);
+      display: block;
+    }
+
+    .stat-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.5);
+      margin-top: 0.4rem;
+    }
+
+    /* ─── EXCURSION CARDS ─── */
+    .excursions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      background: var(--gold-dark);
+      border: 1px solid var(--gold-dark);
+      margin: 0 0 0;
+    }
+
+    .exc-card {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      cursor: pointer;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+    }
+
+    .exc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .exc-card:hover {
+      background: #221a08;
+    }
+
+    .exc-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .exc-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 3rem;
+      color: rgba(201, 168, 76, 0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .exc-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.55);
+      margin-bottom: 0.8rem;
+    }
+
+    .exc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .exc-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      color: rgba(245, 240, 232, 0.5);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .exc-cta {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .exc-cta::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .exc-card:hover .exc-cta::after {
+      transform: translateX(4px);
+    }
+
+    /* ─── MAP PLACEHOLDER ─── */
+    .map-placeholder {
+      background: #1a2a22;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(201, 168, 76, 0.4);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* SVG map dots */
+    .map-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── EXCURSION PAGE ─── */
+    .exc-page-hero {
+      min-height: 50vh;
+      background: linear-gradient(160deg, #0d0d08 0%, #1a1810 50%, #2d2418 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 100px 2rem 3rem;
+    }
+
+    .exc-page-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .back-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.6);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      background: none;
+      border: none;
+    }
+
+    .back-link:hover {
+      color: var(--gold);
+    }
+
+    .exc-page-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 5rem;
+      color: rgba(201, 168, 76, 0.08);
+      line-height: 1;
+      display: block;
+      margin-bottom: -1rem;
+    }
+
+    .exc-page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .exc-page-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(245, 240, 232, 0.6);
+      line-height: 1.6;
+    }
+
+    .exc-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .exc-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--gold-dark);
+      border-bottom: 1px solid var(--gold-dark);
+      margin-bottom: 3rem;
+    }
+
+    .exc-meta-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .exc-meta-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+
+    .guide-block {
+      background: var(--parchment);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: #2a1f10;
+      position: relative;
+    }
+
+    .guide-block::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      left: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--gold-light);
+      line-height: 1;
+      opacity: 0.4;
+    }
+
+    .subtopic {
+      margin: 2.5rem 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .subtopic-num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtopic-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .audio-player {
+      background: var(--ink);
+      border-radius: 4px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .play-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+
+    .play-btn:hover {
+      opacity: 0.8;
+    }
+
+    .play-icon {
+      transition: all 0.05s linear;
+    }
+
+    .audio-info {
+      flex: 1;
+    }
+
+    .audio-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .audio-bar {
+      height: 4px;
+      background: rgba(201, 168, 76, 0.2);
+      margin-top: 0.7rem;
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .audio-progress {
+      height: 100%;
+      background: var(--gold);
+      width: 0%;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    .audio-time {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      color: rgba(201, 168, 76, 0.6);
+      margin-top: 0.5rem;
+    }
+
+    .task-box {
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 2px;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+    }
+
+    .task-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .task-label::before {
+      content: '★';
+      font-size: 0.7rem;
+    }
+
+    .task-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: #2a1f10;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .task-item::before {
+      content: counter(task-c) '.';
+      counter-increment: task-c;
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+    }
+
+    .task-list {
+      counter-reset: task-c;
+    }
+
+    .sources-section {
+      background: var(--parchment);
+      padding: 2rem 2rem;
+      border-top: 2px solid var(--gold-dark);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .sources-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1.2rem;
+    }
+
+    .source-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      color: #3a2e1e;
+      line-height: 1.5;
+      margin-bottom: 0.7rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .source-item::before {
+      content: counter(src-c) '.';
+      counter-increment: src-c;
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+
+    .sources-list {
+      counter-reset: src-c;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-sub {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.5);
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--gold);
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(245, 240, 232, 0.2);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+      }
+    }
+
+    /* Timeline */
+    .timeline {
+      margin: 2rem 0;
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .tl-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      min-width: 55px;
+      padding-top: 0.1rem;
+    }
+
+    .tl-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #2a1f10;
+    }
+
+    .placeholder-img {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #1a2a22 0%, #2d3a2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(201, 168, 76, 0.35);
+    }
+
+    .highlight-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold-dark);
+      line-height: 1.5;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      margin: 2.5rem 0;
+    }
+
+
+    /* ─── IMAGE SLIDER ─── */
+    .img-slider {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 2px;
+    }
+
+    .img-slider img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+
+    .img-slider img.active {
+      opacity: 1;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .slider-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(245, 240, 232, 0.4);
+      border: 1px solid rgba(201, 168, 76, 0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .slider-dot.active {
+      background: var(--gold);
+    }
+
+    .slider-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 1rem 1.8rem;
+      background: linear-gradient(transparent, rgba(26, 18, 8, 0.75));
+      font-family: "Raleway", sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.75);
+      z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-link {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.6rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .excursions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-strip {
+        flex-direction: column;
+      }
+
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html" style="text-decoration:none;">
+      Виртуальный Музей<br /><span
+        style="font-size:0.7rem;color:rgba(201,168,76,0.45);font-family:'Raleway',sans-serif;font-style:normal;letter-spacing:0.12em">Западная
+        Сибирь</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html" style="text-decoration:none;">Главная</a>
+      <a class="nav-link active" href="excursion1.html" style="text-decoration:none;">Экскурсия I</a>
+      <a class="nav-link" href="excursion2.html" style="text-decoration:none;">Экскурсия II</a>
+      <a class="nav-link" href="excursion3.html" style="text-decoration:none;">Экскурсия III</a>
+    </div>
+  </nav>
+
+  <div class="exc-page-hero">
+    <div class="exc-page-hero-inner">
+      <a class="back-link" href="index.html" style="text-decoration:none;">← Вернуться к музею</a>
+      <span class="exc-page-num">I</span>
+      <h1 class="exc-page-title">Нефть и власть: экономическое чудо Западной Сибири</h1>
+      <p class="exc-page-subtitle">От советских скважин к постсоветской приватизации и государственным корпорациям</p>
+    </div>
+  </div>
+
+  <div class="exc-content">
+    <div class="exc-meta">
+      <div class="exc-meta-item">
+        <div class="exc-meta-label">Тема</div>
+        <div class="exc-meta-val">Нефтегазовая промышленность и экономика</div>
+      </div>
+      <div class="exc-meta-item">
+        <div class="exc-meta-label">Период</div>
+        <div class="exc-meta-val">1991 — 2022</div>
+      </div>
+      <div class="exc-meta-item">
+        <div class="exc-meta-label">Формат</div>
+        <div class="exc-meta-val">Аудио-экскурсия с текстом</div>
+      </div>
+      <div class="exc-meta-item">
+        <div class="exc-meta-label">Длительность</div>
+        <div class="exc-meta-val">~13 минут</div>
+      </div>
+    </div>
+
+    <p class="body-text"><strong>Цель экскурсии:</strong> проследить трансформацию нефтегазовой отрасли Западной
+      Сибири с 1991 по 2022 год: от кризиса и распада советской системы к созданию вертикально интегрированных
+      компаний и роли региона в современной России.</p>
+    <div class="audio-player">
+      <button class="play-btn">
+        <div class="play-icon"></div>
+      </button>
+      <div class="audio-info">
+        <div class="audio-title">Сжатое вступление: Нефть Западной Сибири
+        </div>
+        <div class="audio-bar">
+          <div class="audio-progress"></div>
+        </div>
+        <div class="audio-time">00:00 / 00:00</div>
+        <audio id="audio1" src="Сжатый_текст_Нефть_Западной_Сибири_.mp3" preload="metadata"></audio>
+      </div>
+    </div>
+
+    <div class="guide-block">
+      Перед нами карта Западно-Сибирской нефтегазоносной провинции — она
+      расположена на Западно-Сибирской равнине. На востоке ограничена рекой Енисей, на западе — Уральскими горами, на
+      юге — границей с Казахстаном и Алтайскими горами, а на севере — Карским морем.
+      Основная масса месторождений расположена в пределах Тюменской области , также месторождения имеются в Томской
+      области, Омской области, Свердловской области, Новосибирской области и Красноярском крае.
+    </div>
+    <img src="/images/2/image (14).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+      style="width:100%;border-radius:4px;margin:1.5rem 0;">
+    <div class="audio-player">
+      <button class="play-btn" onclick="togglePlay(this)">
+        <div class="play-icon"></div>
+      </button>
+      <div class="audio-info">
+        <div class="audio-title">Вступление — Западно-Сибирская нефтегазоносная провинция</div>
+        <div class="audio-bar">
+          <div class="audio-progress" id="prog1"></div>
+        </div>
+        <div class="audio-time">00:00 / 02:30</div>
+        <audio id="audio2" src="Слайд-1_-Карта.mp3" preload="metadata"></audio>
+
+      </div>
+    </div>
+
+    <!-- SUBTOPIC 1 -->
+    <div class="subtopic">
+      <div class="subtopic-num">Подтема 1</div>
+      <h3 class="subtopic-title">Кризис 1990-х: распад и трансформация</h3>
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 1 — Нефтяной кризис 1990-х</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio3" src="Слайд 2_ Кризис 1990.mp3" preload="metadata"></audio>
+
+        </div>
+      </div>
+      <img src="/images/2/image (15).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+        style="width:100%;border-radius:4px;margin:1.5rem 0;">
+
+      <div class="guide-block">
+        До распада СССР, в Западной Сибири нефтяная промышленность развивалась и устанавливала рекордные показатели, так
+        например в 1988 году добыли 624,3 млн тонн нефти, из них в Западной Сибири — 415 млн тонн. Государство
+        направляло все силы на исследование новых месторождений и скважин, что впоследствии привело к дефициту
+        необходимых технологий. Основная часть техники имела износ более 50%, только 14% соответствовало мировым
+        стандартам, 70% буровых установок устарели. Также в СССР появились сложности с финансированием и поставками,
+        помощь с геологическими работами в Западной Сибири сократилось на 30%.
+
+      </div>
+      <img src="/images/2/image (16).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+        style="width:100%;border-radius:4px;margin:1.5rem 0;">
+
+      <p class="body-text">
+        В 1990-х случается нефтяной кризис, связанный с распадом СССР. Сложности обрушились на Российскую Федерацию, что
+        сильно сказывалось на бюджете страны. С 1986 года началось снижение цен на мировом рынке, что уменьшило валютные
+        поступления извне, в самом государстве жители России также не могли восполнить материальный упадок. Многие
+        регионы не выплачивали нужные суммы за поставленную нефть, также, как и налоги, которые были слишком высоки для
+        предприятий: налоги составляли 50–60% цены нефти, до 75% — в нефтепродуктах, что делало отрасль нерентабельной.
+        В связи с этим, можно выделить ряд последствий кризиса: падение добычи нефти: с 399 млн тонн в 1992 г. до 307
+        млн тонн в 1995 г. (снижение почти на 25%), сокращение эксплуатационного бурения, рост числа бездействующих
+        скважин.
+
+      </p>
+    </div>
+    <div class="guide-block">
+      Это событие отразилось не только на государстве, но и на рабочих. Во многих интервью, взятых у рабочих тех времен,
+      складывается полная картина происходящего. Мужчины ехали в Сибирь на заработки, им обещали хорошие зарплаты и
+      условия, но на самом деле зачастую денежное вознаграждение задерживали, комнаты давали холодные, легко
+      продуваемые. Как вспоминает один из рабочих, работала сильно сказывалась на психологическом и физическом здоровье:
+      “Игорь работал в нечеловеческих условиях: выезжал на ликвидацию аварий на буровых в любую погоду. Иногда транспорт
+      бригады отказывался заводиться, и в таком случае ночевали на месторождении. Он укутывался в три бушлата, забивался
+      в щель между горячим котлом и стеной и так спал до рассвета”.
+
+      <img src="/images/2/image (17).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+        style="width:100%;border-radius:4px;margin:1.5rem 0;">
+
+
+    </div>
+    <p class="body-text">
+      Однако, Российская Федерация не сдавалась и предпринимала все шаги для выхода из кризиса. Первым делом создавались
+      новые законы, которые структурировали бы нефтяную промышленность. Для закрепления госсобственности на недра, ввели
+      систему лицензирования, которую регулировал закон «О недрах» (21.02.1992, № 2395-1). Также регламентировал
+      приватизацию предприятий нефтяной отрасли с созданием вертикально интегрированных нефтяных компаний (ВИНК) Указ
+      Президента от 17.11.1992 № 1403. Помимо этого, было принято решение о создании ключевых ВИНК: «Лукойл», «ЮКОС»,
+      «Сургутнефтегаз», «Роснефть» и др., право экспорта получали добывающие предприятия пропорционально добыче, для них
+      отменялись квоты на экспорт.
+      К началу 2000-х удалось привлечь иностранных инвесторов, которые вкладывали усилия в развитие и добычу нефти, это
+      облегчило Российскому Государству финансирование предприятий и экспорт. Однако, Россия продолжала активно
+      инвестировать бюджет в развитие технологий и нахождение новых месторождений в Западной Сибири и других регионах.
+    </p>
+    <img src="/images/2/image (18).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+      style="width:100%;border-radius:4px;margin:1.5rem 0;">
+
+
+    <!-- SUBTOPIC 2 -->
+    <div class="subtopic">
+      <div class="subtopic-num">Подтема 2</div>
+      <h3 class="subtopic-title">Города нефти: Сургут, Нижневартовск, Новый Уренгой</h3>
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 2 — Города нефтяного бума: Сургут</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio4" src="Слайд-3_-Города-Нефти_-Сургут.mp3" preload="metadata"></audio>
+
+        </div>
+      </div>
+      <img src="/images/2/image (46).png" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+        style="width:100%;border-radius:4px;margin:1.5rem 0;">
+      <div class="guide-block">
+        При изучении нефтяной промышленности Западной Сибири, стоит обратить внимание на города нефти и их развитие.
+        Город с которого хочется начать – Сургут. Говоря об урбанизации, к 1990 году прирост был незначительным:
+        количество уехавших почти сравнялось с числом прибывших. К началу 2026 года численность населения достигла около
+        432 тысяч человек, что на 170 тысяч больше, чем в начале 1990-х. В начале Сургут проживал небольший кризис –
+        спад промышленного производства, поэтому акцент сместили с крупного производства на малый и среднйи бизнес.
+        Жилищное строительство продолжало реабилитироваться с 1994 вплоть до 2025 года. Обеспеченность жильём выросла: в
+        среднем на одного сургутянина приходится 21,6 м2 жилой площади. Сургут расположен в зоне резко континентального
+        климата с холодной зимой и коротким летом. Климатические условия усложняют строительство и эксплуатацию
+        инфраструктуры.
+
+      </div>
+      <div class="subtopic">
+        <div class="subtopic-num">Подтема 2</div>
+        <h3 class="subtopic-title">Города нефти: Сургут, Нижневартовск, Новый Уренгой</h3>
+        <div class="audio-player">
+          <button class="play-btn" onclick="togglePlay(this)">
+            <div class="play-icon"></div>
+          </button>
+          <div class="audio-info">
+            <div class="audio-title">Часть 2 — Города нефтяного бума: Нижневартовск</div>
+            <div class="audio-bar">
+              <div class="audio-progress"></div>
+            </div>
+            <div class="audio-time">00:00 / 08:00</div>
+            <audio id="audio5" src="Слайд_4__Города_нефти__Нижневартовск.mp3" preload="metadata"></audio>
+
+          </div>
+        </div>
+      </div>
+      <img src="/images/2/image (19).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+        style="width:100%;border-radius:4px;margin:1.5rem 0;">
+      <p class="body-text">
+        Также важно поговорить о развитии города Нижневартовск. В 1990 году население Нижневартовска составляло около
+        246,6 тысяч человек. В начале 1990-х начался отток населения из-за экономических трудностей. К 2025 году
+        численность населения оценивается примерно в 245–275 тысяч человек. В 1990-е годы было создано ОАО
+        «Нижневартовскнефтегаз», ставшее основой современной нефтедобывающей отрасли. В 1996 году открылся
+        Нижневартовский государственный университет — первый в городе. В 2000-х годах началась масштабная программа
+        благоустройства: в 2003 году реконструировали набережную реки Обь протяженностью 2,7 км. За период 2010–2020
+        годов построили 1,8 млн м2 жилья, ввели в эксплуатацию 4 новые школы и спортивный комплекс «Триумф».
+        Нижневартовск расположен в зоне континентального климата с холодной зимой и коротким летом. Климатические
+        условия требуют адаптации инфраструктуры и технологий добычи нефти.
+      </p>
+    </div>
+    <img src="/images/2/image (47).png" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+      style="width:100%;border-radius:4px;margin:1.5rem 0;">
+    <div class="subtopic">
+      <div class="subtopic-num">Подтема 2</div>
+      <h3 class="subtopic-title">Города нефти: Сургут, Нижневартовск, Новый Уренгой</h3>
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 2 — Города нефтяного бума: Новый Уренгой</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio6" src="Слайд_5__Города_нефти__новый_Уренгой.mp3" preload="metadata"></audio>
+
+        </div>
+      </div>
+    </div>
+    <div class="guide-block">
+      Последний город, который хочется упомянуть – Новый Уренгой. В 1990-е годы город адаптировался к рыночным условиям,
+      но стратегическая значимость газодобычи обеспечила относительную стабильность. По данным на 2025 год, население
+      Нового Уренгоя достигло 127 тысяч человек. В 2000–2010-е годы город стал опорной территорией для проектов
+      модернизации добычи, транспорта и переработки газа. В 2021 году был открыт один из крупнейших объектов дорожной
+      инфраструктуры Ямала. В 2023 году открылся Арктический лицей — самая большая школа региона. В городе
+      субарктический климат с длинной морозной зимой и коротким прохладным летом.
+    </div>
+    <img src="/images/2/image (20).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+      style="width:100%;border-radius:4px;margin:1.5rem 0;">
+    <img src="/images/2/image (21).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+      style="width:100%;border-radius:4px;margin:1.5rem 0;">
+
+    <!-- SUBTOPIC 3 -->
+    <div class="subtopic">
+      <div class="subtopic-num">Подтема 3</div>
+      <h3 class="subtopic-title">Западная Сибирь в современных реалиях</h3>
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 3 — Регион сегодня</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio7" src="Слайд_6__Роль_западной_Сибири_в_новых_реалиях.mp3" preload="metadata"></audio>
+
+        </div>
+      </div>
+      <div class="guide-block">
+        В заключении хочется поговорить о роли Западной Сибири в современной нефтяной промышленности. Регион остается
+        основным нефтедобывающим в стране, поэтому Западная Сибирь является неотъемлемой частью экономики России. По
+        данным на 2025 год, на неё приходится около 70% российской нефтедобычи. Несмотря на сокращение поставок в
+        Европу, Западная Сибирь продолжает играть роль в экспорте энергоресурсов.
+      </div>
+      <img src="/images/2/image (23).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+        style="width:100%;border-radius:4px;margin:1.5rem 0;">
+      <p class="body-text">
+        Растет ориентация на азиатские рынки, особенно в Китай по газопроводу «Сила Сибири». В 2025 году «Сила Сибири»
+        вышла на проектную мощность в 38 млрд м³ газа. Обсуждается проект «Сила Сибири — 2», который может увеличить
+        экспорт в Китай. Конечно в современных реалиях есть и свои сложности, санкции ограничивают доступ к импортным
+        технологиям, что вынуждает компании ускорять импортозамещение и развивать собственные решения, что приводит к
+        сложностям добычи и бурения. Также стоит обратить внимание на такие трудности в добыче, как истощение
+        месторождений и кадровый дефицит. Однако правительство России продолжает искать пути для решения этих проблем,
+        например направляя акцент на развитие технологий и на новые проекты и сделки. Таким образом, Западная Сибирь
+        остаётся критически важным регионом для экономики России.
+      </p>
+      <img src="/images/2/image (22).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+        style="width:100%;border-radius:4px;margin:1.5rem 0;">
+      <img src="/images/2/image (24).jpg" alt="Карта Западно-Сибирской нефтегазоносной провинции"
+        style="width:100%;border-radius:4px;margin:1.5rem 0;">
+    </div>
+
+    <div class="sources-section">
+      <div class="sources-title">Список использованных источников</div>
+      <div class="sources-list">
+        <div class="source-item">Западно-Сибирская нефтегазоносная провинция. — URL:
+          https://ru.wikipedia.org/wiki/Западно-Сибирская_нефтегазоносная_провинция (дата обращения: 09.04.2026).
+        </div>
+        <div class="source-item">Бодрова Елена Владимировна. Гусарова Мария Николаевна. Калинов Вячеслав Викторович.
+          Развитие нефтегазового
+          комплекса России в 1990-е гг. – URL:
+          https://cyberleninka.ru/article/n/razvitie-neftegazovogo-kompleksa-rossii-v-1990-e-gg/viewer (Дата обращения:
+          09.04.2026).</div>
+        <div class="source-item">Александр Матвейчук. Как добывали первую нефть Западной Сибири. – URL:
+          https://dzen.ru/a/Xe9pQ-bLmwCu5UAP?utm_referrer=alice.yandex.ru (Дата обращения: 09.04.2026).</div>
+        <div class="source-item">Елизавета Городищева. Павел Садыркин. Россия пережила множество кризисов. Как она
+          научилась не бояться падения
+          цен на нефть? – URL: https://lenta.ru/articles/2020/11/16/oil_und_gas/ (Дата обращения: 09.04.2026).</div>
+        <div class="source-item">Тридцать лет спустя. Как изменился Сургут с 1995-го по 2025-й. – URL:
+          https://dzen.ru/a/aarWHYuKNzrACnq_ (Дата
+          обращения: 09.04.2026).</div>
+        <div class="source-item">ЭКОНОМИЧЕСКОЕ И СОЦИАЛЬНОЕ РАЗВИТИЕ ГОРОДА В 80-90-Х гг. XX ВЕКА. – URL:
+          https://www.surwiki.admsurgut.ru/wiki/index.php/Экономическое_социальное_развитие_города_в_80-90-х_гг._XX_века
+          (Дата обращения: 09.04.2026).</div>
+        <div class="source-item">Соколов Сергей Николаевич. ИСТОРИЯ ФОРМИРОВАНИЯ ГОРОДА НИЖНЕВАРТОВСКА. – URL:
+          https://cyberleninka.ru/article/n/istoriya-formirovaniya-goroda-nizhnevartovska/viewer (Дата обращения:
+          09.04.2026).</div>
+        <div class="source-item">Л.В. Алексеева. Формирование населения города Нижневартовска (середина 1960-х – начало
+          1990-х годов). – URL:
+          https://illhkomisc.ru/wp-content/uploads/2021/04/25-29.pdf (Дата обращения: 09.04.2026).</div>
+        <div class="source-item">Нижневартовск. – URL: https://dzen.ru/topic/nizhnevartovsk?tab=wiki (Дата обращения:
+          09.04.2026).</div>
+        <div class="source-item">Юношева Яна. День города Новый Уренгой: история и символика. – URL:
+          https://www.astromeridian.ru/poetry/novyy-urengoy.html (Дата обращения: 09.04.2026).</div>
+        <div class="source-item">Артемий Романов. В Новом Уренгое объяснили феномен быстрого роста населения. – URL:
+          https://tumentoday.ru/2025/07/21/v_novom_urengoye_obyasnili_fenomen_bystrogo_rosta_naseleniya/ (Дата
+          обращения:
+          09.04.2026).</div>
+        <div class="source-item">Кобер Павел. Промышленность Западной Сибири наконец-то возобновила рост. С чем это
+          связано. – URL:
+          https://expert-ural.com/articles/promishlennost-zapadnoy-sibiri-nakonec-to-vozobnovila-rost-s-chem-eto-svyazano.html
+          (Дата обращения: 09.04.2026).</div>
+        <div class="source-item">Алекс Будрис. Сжатый экспорт: куда шел российский газ в 2025 году. –
+          https://www.forbes.ru/biznes/553111-szatyj-eksport-kuda-sel-rossijskij-gaz-v-2025-godu (Дата обращения:
+          09.04.2026).</div>
+        <div class="source-item">Виктория Лачугина. «Убытки и закрытие скважин». Что нефтяников ХМАО ждет в еще один год
+          дешевой нефти? – URL:
+          https://muksun.fm/news/2025-09-12/ubytki-i-zakrytie-skvazhin-chto-neftyanikov-hmao-zhdet-v-esche-odin-god-deshevoy-nefti-5473844?utm_source=alice.yandex.ru&utm_medium=referral&utm_campaign=alice.yandex.ru&utm_referrer=alice.yandex.ru
+          (Дата обращения: 09.04.2026).</div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Виртуальный Музей</div>
+    <div class="footer-sub">Западная Сибирь · 1991–2022</div>
+    <div class="footer-links">
+      <button class="footer-link" onclick="showPage('main')">← Главная</button>
+      <a class="footer-link" href="excursion2.html" style="text-decoration:none;">Экскурсия II →</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Универсальный аудио-плеер с возможностью перемотки (клик/перетаскивание) и динамическим таймером
+      const demoFallbackSrc = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+
+      function formatTime(seconds) {
+        if (isNaN(seconds) || !isFinite(seconds)) return "00:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }
+
+      function initAudioPlayer(player) {
+        // находим или создаём audio элемент
+        let audio = player.querySelector('audio');
+        const audioInfo = player.querySelector('.audio-info');
+        if (!audio && audioInfo) {
+          audio = document.createElement('audio');
+          audio.preload = 'metadata';
+          audioInfo.appendChild(audio);
+        }
+        if (!audio) return;
+
+        // если у аудио нет src (пустой или не задан) — устанавливаем демо-трек
+        if (!audio.src || audio.src === '' || audio.src === window.location.href) {
+          audio.src = demoFallbackSrc;
+        }
+
+        // элементы управления
+        const playBtn = player.querySelector('.play-btn');
+        const progressBar = player.querySelector('.audio-bar');
+        const progressFill = player.querySelector('.audio-progress');
+        const timeDisplay = player.querySelector('.audio-time');
+
+        if (!playBtn || !progressBar || !progressFill || !timeDisplay) return;
+
+        // удаляем старые inline-обработчики, если были
+        playBtn.removeAttribute('onclick');
+
+        // обновление UI: прогресс и таймер
+        function updateUI() {
+          if (!audio.duration || isNaN(audio.duration)) {
+            progressFill.style.width = '0%';
+            timeDisplay.textContent = `00:00 / 00:00`;
+            return;
+          }
+          const percent = (audio.currentTime / audio.duration) * 100;
+          progressFill.style.width = percent + '%';
+          timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        }
+
+        // переключение иконки play/pause
+        function setPlayIcon(playing) {
+          const icon = playBtn.querySelector('.play-icon');
+          if (!icon) return;
+          if (playing) {
+            icon.style.cssText = 'width:4px;height:14px;background:var(--ink);box-shadow:6px 0 0 var(--ink);margin-left:2px';
+          } else {
+            icon.style.cssText = 'width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:12px solid var(--ink);margin-left:2px';
+          }
+        }
+
+        // события аудио
+        audio.addEventListener('loadedmetadata', updateUI);
+        audio.addEventListener('timeupdate', updateUI);
+        audio.addEventListener('play', () => setPlayIcon(true));
+        audio.addEventListener('pause', () => setPlayIcon(false));
+        audio.addEventListener('ended', () => {
+          setPlayIcon(false);
+          updateUI();
+        });
+        audio.addEventListener('error', () => {
+          // если источник недоступен и ещё не заменяли на fallback, пробуем заменить
+          if (!audio.src.includes('soundhelix') && !audio.src.startsWith('blob')) {
+            audio.src = demoFallbackSrc;
+            audio.load();
+          }
+        });
+
+        // клик по play/pause
+        playBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (audio.paused) {
+            audio.play().catch(err => console.warn('Playback error:', err));
+          } else {
+            audio.pause();
+          }
+        });
+
+        // перемотка: клик по прогресс-бару
+        function seekFromEvent(clientX, rect) {
+          if (!audio.duration || isNaN(audio.duration)) return;
+          let offsetX = clientX - rect.left;
+          let percent = Math.min(1, Math.max(0, offsetX / rect.width));
+          audio.currentTime = percent * audio.duration;
+          updateUI();
+        }
+
+        progressBar.addEventListener('click', (e) => {
+          const rect = progressBar.getBoundingClientRect();
+          seekFromEvent(e.clientX, rect);
+        });
+
+        // drag (перетаскивание) для перемотки
+        let isDragging = false;
+        const onMouseMove = (e) => {
+          if (!isDragging) return;
+          const rect = progressBar.getBoundingClientRect();
+          seekFromEvent(e.clientX, rect);
+          e.preventDefault();
+        };
+        const onMouseUp = () => {
+          isDragging = false;
+          window.removeEventListener('mousemove', onMouseMove);
+          window.removeEventListener('mouseup', onMouseUp);
+        };
+        progressBar.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          const rect = progressBar.getBoundingClientRect();
+          seekFromEvent(e.clientX, rect);
+          window.addEventListener('mousemove', onMouseMove);
+          window.addEventListener('mouseup', onMouseUp);
+          e.preventDefault();
+        });
+
+        // touch-события для мобильных
+        progressBar.addEventListener('touchstart', (e) => {
+          isDragging = true;
+          const touch = e.touches[0];
+          const rect = progressBar.getBoundingClientRect();
+          seekFromEvent(touch.clientX, rect);
+          window.addEventListener('touchmove', onMouseMove);
+          window.addEventListener('touchend', onMouseUp);
+          e.preventDefault();
+        });
+
+        // начальное состояние
+        updateUI();
+        setPlayIcon(false);
+        // принудительно загружаем метаданные, если аудио еще не готово
+        if (audio.readyState === 0) {
+          audio.load();
+        }
+      }
+
+      // инициализация всех .audio-player после загрузки DOM
+      document.addEventListener('DOMContentLoaded', () => {
+        const players = document.querySelectorAll('.audio-player');
+        players.forEach(player => initAudioPlayer(player));
+      });
+    })();
+  </script>
+</body>
+
+</html>
