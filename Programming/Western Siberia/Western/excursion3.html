@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Экскурсия III — Этнокультурное наследие: ханты, манси, ненцы в постсоветской Сибири</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-dark: #8B6914;
+      --ink: #1A1208;
+      --cream: #F5F0E8;
+      --parchment: #EDE4D0;
+      --steel: #2C3E50;
+      --birch: #F8F4EC;
+      --taiga: #2D4A3E;
+      --snow: #FAFAF8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--birch);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ─── PAGE SYSTEM ─── */
+    .page {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(26, 18, 8, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gold-dark);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      line-height: 1.2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .nav-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: rgba(201, 168, 76, 0.7);
+      text-transform: uppercase;
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      background: none;
+      border-radius: 2px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold);
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0d0d08 0%, #1a1810 40%, #2d2418 70%, #1a1208 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-ornament {
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5em;
+      animation: fadeSlideDown 1.2s ease both;
+    }
+
+    .hero-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: rgba(201, 168, 76, 0.6);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeSlideDown 1.2s 0.1s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.05;
+      animation: fadeSlideDown 1.2s 0.2s ease both;
+    }
+
+    .hero-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245, 240, 232, 0.65);
+      margin-top: 1.5rem;
+      max-width: 600px;
+      line-height: 1.6;
+      animation: fadeSlideDown 1.2s 0.35s ease both;
+    }
+
+    .hero-divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 2.5rem auto;
+      animation: fadeIn 1.5s 0.5s ease both;
+    }
+
+    .hero-dates {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      opacity: 0.8;
+      letter-spacing: 0.1em;
+      animation: fadeIn 1.5s 0.6s ease both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(201, 168, 76, 0.5);
+      text-transform: uppercase;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── SECTION ─── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title em {
+      color: var(--gold-dark);
+      font-style: italic;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    p.body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.85;
+      color: #2a1f10;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── ALTERNATING BAND ─── */
+    .band {
+      background: var(--parchment);
+    }
+
+    .band-dark {
+      background: var(--taiga);
+    }
+
+    .band-dark .section-label {
+      color: rgba(201, 168, 76, 0.6);
+    }
+
+    .band-dark .section-title {
+      color: var(--cream);
+    }
+
+    .band-dark .section-title em {
+      color: var(--gold-light);
+    }
+
+    .band-dark p.body-text {
+      color: rgba(245, 240, 232, 0.8);
+    }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: var(--ink);
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 180px;
+      max-width: 240px;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--gold);
+      display: block;
+    }
+
+    .stat-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.5);
+      margin-top: 0.4rem;
+    }
+
+    /* ─── EXCURSION CARDS ─── */
+    .excursions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      background: var(--gold-dark);
+      border: 1px solid var(--gold-dark);
+      margin: 0 0 0;
+    }
+
+    .exc-card {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      cursor: pointer;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+    }
+
+    .exc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .exc-card:hover {
+      background: #221a08;
+    }
+
+    .exc-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .exc-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 3rem;
+      color: rgba(201, 168, 76, 0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .exc-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.55);
+      margin-bottom: 0.8rem;
+    }
+
+    .exc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .exc-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      color: rgba(245, 240, 232, 0.5);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .exc-cta {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .exc-cta::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .exc-card:hover .exc-cta::after {
+      transform: translateX(4px);
+    }
+
+    /* ─── MAP PLACEHOLDER ─── */
+    .map-placeholder {
+      background: #1a2a22;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(201, 168, 76, 0.4);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* SVG map dots */
+    .map-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── EXCURSION PAGE ─── */
+    .exc-page-hero {
+      min-height: 50vh;
+      background: linear-gradient(160deg, #0d0d08 0%, #1a1810 50%, #2d2418 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 100px 2rem 3rem;
+    }
+
+    .exc-page-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .back-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.6);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      background: none;
+      border: none;
+    }
+
+    .back-link:hover {
+      color: var(--gold);
+    }
+
+    .exc-page-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 5rem;
+      color: rgba(201, 168, 76, 0.08);
+      line-height: 1;
+      display: block;
+      margin-bottom: -1rem;
+    }
+
+    .exc-page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .exc-page-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(245, 240, 232, 0.6);
+      line-height: 1.6;
+    }
+
+    .exc-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .exc-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--gold-dark);
+      border-bottom: 1px solid var(--gold-dark);
+      margin-bottom: 3rem;
+    }
+
+    .exc-meta-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .exc-meta-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+
+    .guide-block {
+      background: var(--parchment);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: #2a1f10;
+      position: relative;
+    }
+
+    .guide-block::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      left: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--gold-light);
+      line-height: 1;
+      opacity: 0.4;
+    }
+
+    .subtopic {
+      margin: 2.5rem 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .subtopic-num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtopic-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .audio-player {
+      background: var(--ink);
+      border-radius: 4px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .play-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+
+    .play-btn:hover {
+      opacity: 0.8;
+    }
+
+    .play-icon {
+      transition: all 0.05s linear;
+    }
+
+    .audio-info {
+      flex: 1;
+    }
+
+    .audio-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .audio-bar {
+      height: 4px;
+      background: rgba(201, 168, 76, 0.2);
+      margin-top: 0.7rem;
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .audio-progress {
+      height: 100%;
+      background: var(--gold);
+      width: 0%;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    .audio-time {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      color: rgba(201, 168, 76, 0.6);
+      margin-top: 0.5rem;
+    }
+
+    .task-box {
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 2px;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+    }
+
+    .task-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .task-label::before {
+      content: '★';
+      font-size: 0.7rem;
+    }
+
+    .task-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: #2a1f10;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .task-item::before {
+      content: counter(task-c) '.';
+      counter-increment: task-c;
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+    }
+
+    .task-list {
+      counter-reset: task-c;
+    }
+
+    .sources-section {
+      background: var(--parchment);
+      padding: 2rem 2rem;
+      border-top: 2px solid var(--gold-dark);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .sources-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1.2rem;
+    }
+
+    .source-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      color: #3a2e1e;
+      line-height: 1.5;
+      margin-bottom: 0.7rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .source-item::before {
+      content: counter(src-c) '.';
+      counter-increment: src-c;
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+
+    .sources-list {
+      counter-reset: src-c;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-sub {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.5);
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--gold);
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(245, 240, 232, 0.2);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+      }
+    }
+
+    /* Timeline */
+    .timeline {
+      margin: 2rem 0;
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .tl-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      min-width: 55px;
+      padding-top: 0.1rem;
+    }
+
+    .tl-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #2a1f10;
+    }
+
+    .placeholder-img {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #1a2a22 0%, #2d3a2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(201, 168, 76, 0.35);
+    }
+
+    .highlight-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold-dark);
+      line-height: 1.5;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      margin: 2.5rem 0;
+    }
+
+
+    /* ─── IMAGE SLIDER ─── */
+    .img-slider {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 2px;
+    }
+
+    .img-slider img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+
+    .img-slider img.active {
+      opacity: 1;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .slider-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(245, 240, 232, 0.4);
+      border: 1px solid rgba(201, 168, 76, 0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .slider-dot.active {
+      background: var(--gold);
+    }
+
+    .slider-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 1rem 1.8rem;
+      background: linear-gradient(transparent, rgba(26, 18, 8, 0.75));
+      font-family: "Raleway", sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.75);
+      z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-link {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.6rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .excursions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-strip {
+        flex-direction: column;
+      }
+
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html" style="text-decoration:none;">
+      Виртуальный Музей<br /><span
+        style="font-size:0.7rem;color:rgba(201,168,76,0.45);font-family:'Raleway',sans-serif;font-style:normal;letter-spacing:0.12em">Западная
+        Сибирь</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html" style="text-decoration:none;">Главная</a>
+      <a class="nav-link" href="excursion1.html" style="text-decoration:none;">Экскурсия I</a>
+      <a class="nav-link" href="excursion2.html" style="text-decoration:none;">Экскурсия II</a>
+      <a class="nav-link active" href="excursion3.html" style="text-decoration:none;">Экскурсия III</a>
+    </div>
+  </nav>
+
+  <div class="exc-page-hero">
+    <div class="exc-page-hero-inner">
+      <a class="back-link" href="index.html" style="text-decoration:none;">← Вернуться к музею</a>
+      <span class="exc-page-num">III</span>
+      <h1 class="exc-page-title">Этнокультурное наследие: ханты, манси, ненцы в постсоветской Сибири</h1>
+      <p class="exc-page-subtitle">Традиция и современность — как малые народы Сибири сохраняют идентичность в
+        эпоху
+        нефтяного освоения</p>
+    </div>
+  </div>
+  <div class="exc-content">
+    <div class="exc-meta">
+      <div class="exc-meta-item">
+        <div class="exc-meta-label">Тема</div>
+        <div class="exc-meta-val">Кто живет в Западной Сибири: этнокультурное наследие коренных народов</div>
+      </div>
+      <div class="exc-meta-item">
+        <div class="exc-meta-label">Период</div>
+        <div class="exc-meta-val">1991 — 2022</div>
+      </div>
+      <div class="exc-meta-item">
+        <div class="exc-meta-label">Формат</div>
+        <div class="exc-meta-val">Аудио-экскурсия с текстом</div>
+      </div>
+      <div class="exc-meta-item">
+        <div class="exc-meta-label">Длительность</div>
+        <div class="exc-meta-val">~10 минут</div>
+      </div>
+    </div>
+    <p class="body-text"><strong>Цель экскурсии:</strong> рассмотреть традиционный уклад и духовную культуру
+      коренных малочисленных народов Западной Сибири — хантов, манси и ненцев, — их столкновение с
+      индустриализацией и современные стратегии сохранения языка и идентичности.</p>
+    <div class="audio-player">
+      <button class="play-btn">
+        <div class="play-icon"></div>
+      </button>
+      <div class="audio-info">
+        <div class="audio-title">Часть 1 — Введение</div>
+        <div class="audio-bar">
+          <div class="audio-progress"></div>
+        </div>
+        <div class="audio-time">00:00 / 00:00</div>
+        <audio id="audio1" src="Слайд 1.mp3" preload="metadata"></audio>
+      </div>
+    </div>
+    <div class="guide-block">
+      Перед вами карта Западной Сибири. Именно здесь, за Полярным кругом и вдоль крупных рек Обь и Иртыш, веками живут
+      ханты, манси и ненцы. После 1991 года границы их традиционных территорий не изменились, но административный статус
+      многих поселений трансформировался: часть из них вошла в состав ХМАО-Югры и ЯНАО, получив новые возможности для
+      сохранения уклада. Таким образом, география определила не только маршруты кочевий, но и сам характер
+      взаимодействия с государством в постсоветский период.
+    </div>
+    <img src='/images/3/image (3).jpg'
+      alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+      style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+    <div class="guide-block">
+      Но как человек выживает в условиях долгой зимы и болотистой местности? Давайте посмотрим на традиционные промыслы.
+    </div>
+    <img src='/images/3/image (44).png'
+      alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+      style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+
+    <!-- SUBTOPIC 1 -->
+    <div class="subtopic">
+      <div class="subtopic-num">Подтема 1</div>
+      <h3 class="subtopic-title">Традиционный уклад: промыслы и духовная культура</h3>
+      <div class="audio-player">
+        <button class="play-btn">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 2 — Промыслы народов Западной Сибири</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 00:00</div>
+          <audio id="audio2" src="Слайд 2.mp3" preload="metadata"></audio>
+        </div>
+      </div>
+      <div class="guide-block">
+        Ханты и манси исторически специализировались на охоте и речном рыболовстве[3], тогда как ненцы — на
+        оленеводстве. В 1990-е годы, после распада колхозной системы, многие семьи вернулись к частному
+        хозяйствованию.[1] К 2010-м оленьи поголовья в Ямало-Ненецком АО стабилизировались на уровне 600-700 тыс. голов,
+        что сделало регион мировым лидером в этой сфере.[2] Каждый элемент быта - от нарты до берестяной посуды —
+        создавался с учётом мобильности и климата. Промыслы здесь никогда не были просто «способом добычи пищи». Это
+        сложная экосистема знаний, передаваемая из поколения в поколение и лежащая в основе социальной организации.
+
+      </div>
+      <img src='/images/3/image (4).jpg'
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 3 — Основы мировоззрения</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio3" src="Слайд 3.mp3" preload="metadata"></audio>
+        </div>
+      </div>
+      <p class="body-text">
+        В основе мировоззрения лежит анимизм: каждый объект природы имеет духа. С 1991 года, после снятия идеологических
+        ограничений, началось возрождение обрядов почитания земли и огня. Многие святилища, разрушенные в советский
+        период, были восстановлены активистами совместно с учёными-этнографами.
+        Орнаменты на одежде — не просто украшение, это «письменность», кодирующая родство, статус и связь с
+        духами-покровителями. Духовная культура служит «кодом выживания», передавая экологические нормы и этические
+        запреты через поколения, особенно в условиях, когда письменная традиция развивалась лишь с XIX века.
+        Итак, мы увидели, как традиционный уклад хантов, манси и ненцев сформировался под влиянием сурового климата и
+        сохранился благодаря гибкости и глубокой связи с природой. В следующем зале мы поговорим о том, как этот уклад
+        столкнулся с индустриальной эпохой.
+      </p>
+      <img src='/images/3/image (6).jpg'
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+    </div>
+    <!-- SUBTOPIC 2 -->
+    <div class="subtopic">
+      <div class="subtopic-num">Подтема 2</div>
+      <h3 class="subtopic-title">Индустриализация: нефть против оленей</h3>
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 4 — Столкновение двух миров</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio4" src="Слайд 4.mp3" preload="metadata"></audio>
+
+        </div>
+      </div>
+      <div class="guide-block">
+        После распада СССР Западная Сибирь стала главным ресурсным щитом страны. К 2000-м годам на территории ХМАО и
+        ЯНАО действовало более 800 нефтегазовых месторождений. [15] Инфраструктура (дороги, ЛЭП, посёлки нефтяников)
+        изменила ландшафт навсегда. [14] Но что это означало для тех, чья жизнь зависела от нетронутых пастбищ?[1]
+        Индустриализация принесла рабочие места и социальную инфраструктуру, но одновременно нарушила многовековые
+        маршруты кочевий.
+
+      </div>
+      <img src='/images/3/image (45).png'
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 5 — Промышленное освоение</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio5" src="Слайд 5.mp3" preload="metadata"></audio>
+        </div>
+      </div>
+
+      <p class="body-text">
+        По экспертным оценкам, с 1990-х годах в России фиксировалось до 20–24 тысяч порывов нефте и газопроводов
+        ежегодно. Западная Сибирь, где сосредоточена основная инфраструктура добычи, традиционно относится к регионам с
+        повышенной аварийной нагрузкой: сожжено в факелах сотни млрд. куб. м попутного газа, являющегося одним из
+        крупных источников загрязнения атмосферы. [5] Ихтиофауна Обь-Иртышского бассейна испытывает значительную
+        антропогенную нагрузку, включая загрязнение нефтепродуктами, что негативно сказывается на воспроизводстве ценных
+        видов рыб, особенно сиговых[25]. В отдельных участках бассейна отмечается снижение численности промысловых видов
+        [6], а оленеводы вынуждены были смещать маршруты на 50-100 км от первоначальных.[1] При этом местные сообщества
+        не оставались пассивными: с 2000-х стали создаваться народные дружины по мониторингу экологии.[8] Экологические
+        последствия стали катализатором гражданской активности, заставив пересмотреть подход к «безвозмездному» освоению
+        территорий. [8]
+      </p>
+      <img src='/images/3/image (7).jpg'
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 6 — Государственные меры</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio6" src="Слайд 6.mp3" preload="metadata"></audio>
+        </div>
+      </div>
+
+
+      <div class="guide-block">
+        В 2001 году принят ФЗ Nº49 «О территориях традиционного природопользования», закрепивший право коренных народов
+        на особый режим хозяйствования. Несмотря на принятие Федерального закона № 49-ФЗ в 2001 году,
+        институционализация территорий традиционного природопользования федерального значения остаётся незавершённой
+        вследствие отсутствия нормативного акта, регламентирующего порядок их создания. В результате, по экспертным
+        оценкам, преобладают ТТП регионального уровня (490 из приблизительно 600 созданных), а их формирование
+        осуществляется неравномерно: на начало 2020-х годов такие территории образованы лишь в 13 из 28 субъектов РФ,
+        где проживают коренные малочисленные народы. Компенсации от нефтекомпаний часто выплачивались в денежной форме,
+        что не всегда соответствовало традиционным ценностям. [9] Тем не менее, к 2015-2020 гг. появились совместные
+        проекты: «экологические тропы», программы переобучения оленеводов, корпоративные гранты на сохранение языка.
+        [Вывод] Правовая база создала основу для диалога, но её реализация остаётся неравномерной, требуя постоянного
+        общественного контроля.
+        [Финальный вывод] Столкновение индустрии и традиций - не чёрно-белая история. Это сложный процесс адаптации, где
+        экономика, экология и права человека находятся в постоянном поиске баланса. В третьем зале мы увидим, как
+        культуры находят силы для возрождения.
+      </div>
+    </div>
+    <!-- SUBTOPIC 3 -->
+    <div class="subtopic">
+      <div class="subtopic-num">Подтема 3</div>
+      <h3 class="subtopic-title">Возрождение: язык, обряды и цифровое будущее</h3>
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 7 — Культура живёт</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio7" src="Слайд 7.mp3" preload="metadata"></audio>
+
+        </div>
+      </div>
+      <div class="guide-block">
+        В 1990-е годы хантыйский, мансийский и ненецкий языки были внесены в «Красную книгу языков мира» ЮНЕСКО как
+        находящиеся под угрозой.[26] К 2000-му в школах региона вводились факультативы, но нехватка учебников и учителей
+        тормозила процесс. Ситуация изменилась в 2010-е: появились цифровые словари, мобильные приложения, подкасты и
+        YouTube-каналы на национальных языках. Сегодня хантыйский язык изучают более 2 тыс. детей в школах ХМАО, а
+        ненецкий входит в программы дошкольного образования ЯНАО.[17]
+      </div>
+      <img src="/images/3/image (8).jpg"
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+      <img src="/images/3/image (9).jpg"
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 8 — Возрождение традиций</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio8" src="Слайд 8.mp3" preload="metadata"></audio>
+
+        </div>
+      </div>
+      <p class="body-text">
+        Медвежьи игрища адаптированы для зрителей без нарушения сакральной сути — часть ритуалов по-прежнему
+        остаётся доступной только для членов рода. Ключевую роль в возрождении культуры играют НКО: «Спасение
+        Югры», «Ассоциация коренных малочисленных народов Севера», региональные этнокультурные центры. Молодёжь
+        создаёт краудфандинговые проекты, записывает устные истории старейшин, запускает онлайн-архивы. К 2022
+        году наблюдается рост вовлечённости молодых активистов в сохранение культурного наследия. Сохранение
+        культуры сегодня — это живая, динамичная работа, где технологии и традиции дополняют друг друга. Цифровизация
+        стала новым инструментом передачи языка, особенно среди молодёжи, живущей в городах.
+      </p>
+      <img src="/images/3/image (10).jpg"
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+      <div class="guide-block">
+        После 1991 года многие обряды, запрещённые или маргинализированные в советский период, вернулись в публичное
+        пространство. Фестиваль «День оленевода» в Салехарде собирает до 10 тыс. участников.
+        Медвежьи игрища, некогда таинственные и закрытые, адаптированы для зрителей без нарушения сакральной сути. При
+        этом сохраняется правило: часть ритуалов остаётся доступной только для членов рода.[24] Публичность не равна
+        утрате смысла. Коренные сообщества научились дозировать доступ к культурному наследию, сохраняя его ядро.
+      </div>
+      <img src="/images/3/image (11).jpg"
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+      <img src="/images/3/image (12).jpg"
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+      <div class="audio-player">
+        <button class="play-btn" onclick="togglePlay(this)">
+          <div class="play-icon"></div>
+        </button>
+        <div class="audio-info">
+          <div class="audio-title">Часть 9 — Государство и культура</div>
+          <div class="audio-bar">
+            <div class="audio-progress"></div>
+          </div>
+          <div class="audio-time">00:00 / 08:00</div>
+          <audio id="audio9" src="Слайд 9.mp3" preload="metadata"></audio>
+
+        </div>
+      </div>
+      <p class="body-text">
+        Роль государства закреплена в Стратегии устойчивого развития коренных народов до 2030 г., но ключевую роль
+        играют НКО: «Спасение Югры», «Ассоциация коренных малочисленных народов Севера», региональные этнокультурные
+        центры.[20] Молодёжь создаёт краудфандинговые проекты, записывает устные истории старейшин, запускает
+        онлайн-архивы. К 2022 наблюдается рост вовлечённости молодёжи из числа коренных народов в сохранение культурного
+        наследия: реализуются грантовые программы, создаются цифровые архивы устных историй, развиваются этнокультурные
+        проекты с участием молодых активистов. Сохранение культуры сегодня — это не музейная консервация, а живая,
+        динамичная работа, где технологии и традиции дополняют друг друга.
+      </p>
+      <img src="/images/3/image (13).jpg"
+        alt='Карта Западной Сибири с обозначением традиционных территорий хантов, манси и ненцев'
+        style="width:100%;border:1px solid rgba(201,168,76,0.15);margin:1.5rem 0;">
+    </div>
+    <div class="highlight-quote">
+      Мы прошли путь от традиционного уклада через индустриальные вызовы к современным стратегиям сохранения. Коренные
+      народы Западной Сибири не исчезли. Они адаптируются, защищают свои земли и учат мир устойчивому сосуществованию с
+      природой.
+    </div>
+  </div>
+  <div class="sources-section">
+    <div class="sources-title">Список использованных источников</div>
+    <div class="sources-list">
+      <div class="source-item">Зуев С. М. Проблемы устойчивого развития оленеводства в Ямало-Ненецком автономном
+        округе // Россия в глобальном мире. — 2016. — № 9 (32). — С. 173–187. URL:
+        https://cyberleninka.ru/article/n/problemy-ustoychivogo-razvitiya-olenevodstva-v-yamalo-nenetskom-avtonomnom-okruge/viewer
+      </div>
+      <div class="source-item">Логинов В. Г. ОЛЕНЕВОДСТВО КАК БАЗОВАЯ ОТРАСЛЬ ТРАДИЦИОННОЙ ЭКОНОМИКИ И ОБРАЗ ЖИЗНИ
+        КОРЕННЫХ НАРОДОВ АРК ТИКИ. –
+        2025.
+        http://arctica-ac.ru/docs/journals/59/olenevodstvo-kak-bazovaya-otrasl-tradicionnoy-ekonomiki-iobraz-jizni-korennyh-na.pdf
+      </div>
+      <div class="source-item">Локтев Р. И., Зуев С. М. Проблемы жизнедеятельности населения, ведущего традиционный
+        образ жизни, в условиях
+        промышленного и инфраструктурного освоения Ямало-Ненецкого автономного округа //Современная научная мысль. –
+        2017. – №. 1. – С. 243-249.
+        https://cyberleninka.ru/article/n/problemy-zhiznedeyatelnosti-naseleniya-veduschego-traditsionnyy-obraz-zhizni-v-usloviyah-promyshlennogo-i-infrastrukturnogo/viewer
+      </div>
+
+      <div class="source-item">Тория Р. А. Территории традиционного природопользования коренных малочисленных народов
+        севера, Сибири и Дальнего
+        Востока Российской Федерации //Пробелы в российском законодательстве. Юридический журнал. – 2011. – №. 5. – С.
+        51-54.</div>
+
+      <div class="source-item">Хакназаров С. Х. Устойчивое развитие коренных малочисленных народов Севера:
+        теоретико-социологический анализ
+        //Вестник угроведения. – 2013. – №. 4 (15). – С. 118-124.
+        https://cyberleninka.ru/article/n/ustoychivoe-razvitie-korennyh-malochislennyh-narodov-severa-teoretiko-sotsiologicheskiy-analiz/viewer
+      </div>
+
+      <div class="source-item">Голубчиков С. Н., Ильина И. Н., Минин А. А. Сравнительный анализ экологического состояния
+        и природоохранной
+        политики в ЯНАО, ХМАО–Югре и Таймырском муниципальном районе Красноярского края.
+        https://irsup.hse.ru/data/2015/10/30/1079615802/Тезисы докладчиков.pdf</div>
+
+      <div class="source-item">Пасечник М. В., Игенбаева Н. О. ЭКОЛОГИЧЕСКАЯ ПРОБЛЕМАТИКА ФУНКЦИОНИРОВАНИЯ НЕФТЕГАЗОВОГО
+        КОМПЛЕКСА СИБИРИ
+        //Современная экология: образование, наука, практика. – 2017. – С. 337-344.</div>
+
+      <div class="source-item">Новикова Н. И. Коренные народы российского Севера и нефтегазовые компании: преодоление
+        рисков //Арктика:
+        экология и экономика. – 2013. – Т. 11. – №. 3. – С. 102.
+        http://ibrae.ac.ru/docs/3(11)/102_111_ARKTIKA_3(11)_09_2013.pdf</div>
+
+      <div class="source-item">Тулаева С. А., Тысячнюк М. С. Между нефтью и оленями. О распределении благ между
+        нефтяниками и коренными
+        народами в российской Арктике и Субарктике //Экономическая социология. – 2017. – Т. 18. – №. 3. – С. 70-96.
+        https://cyberleninka.ru/article/n/mezhdu-neftyu-i-olenyami-o-raspredelenii-blag-mezhdu-neftyanikami-i-korennymi-narodami-v-rossiyskoy-arktike-i-subarktike/viewer
+      </div>
+
+      <div class="source-item">Ледков Г. П., Соловьёв М. М. Защита интересов и обеспечение качества жизни основа
+        устойчивого развития коренных
+        малочисленных народов Севера, Сибири и Дальнего Востока Российской Федерации //Universum: Вестник Герценовского
+        университета. – 2014. – №. 2. – С. 26-36.</div>
+
+      <div class="source-item">Калинина К. В. Теоретико-методологические основы устойчивого развития коренных
+        малочисленных народов Севера,
+        Сибири и Дальнего востока1 //Этносоциум и межнациональная культура. – 2015. – №. 10. – С. 9.</div>
+
+      <div class="source-item">Смирнов О. А. и др. ОЦЕНКА ПЕРСПЕКТИВ НЕФТЕГАЗОНОСНОСТИ ТЕРРИТОРИИ ЗАПАДНОЙ СИБИРИ НА
+        РЕГИОНАЛЬНОМ ЭТАПЕ
+        ИССЛЕДОВАНИЙ //Нефтегазовая геология. Теория и практика. – 2024. – Т. 19. – №. 4. – С. 9.
+        https://cyberleninka.ru/article/n/otsenka-perspektiv-neftegazonosnosti-territorii-zapadnoy-sibiri-na-regionalnom-etape-issledovaniy/viewer
+      </div>
+
+      <div class="source-item">Чабина Ю. А. и др. СРАВНИТЕЛЬНЫЙ АНАЛИЗ РАЗВИТИЯ НЕФТЕДОБЫВАЮЩИХ РЕГИОНОВ:
+        ХАНТЫ-МАНСИЙСКОГО АВТОНОМНОГО
+        ОКРУГА–ЮГРА, ЯМАЛО-НЕНЕЦКОГО АВТОНОМНОГО ОКРУГА И КРАСНОЯРСКОГО КРАЯ //Наука и молодежь [Электронный ресурс]:
+        материалы XVII Всероссий-ской научно-технической конференции студентов, аспирантов и молодых уче-ных (01-05 июня
+        2020 года, г. Барнаул): в 8 ч./АлтГТУ им. ИИ Ползуно-ва.–Электрон. текстовые дан.(1 файл: 3, 95 МБ).–Барнаул:
+        Изд-во АлтГТУ, 2020.–Ч. 5.–Режим доступа: https://journal. altstu. ru/konf_2020/2020_1/49. – 2020. – С. 133.
+      </div>
+
+      <div class="source-item">Филиппова В. В. Доступ к территориям традиционного природопользования: мобильность
+        локальных сообществ в
+        условия промышленного освоения //Кунсткамера. – 2020. – №. 1 (7). – С. 36-42.
+        https://cyberleninka.ru/article/n/dostup-k-territoriyam-traditsionnogo-prirodopolzovaniya-mobilnost-lokalnyh-soobschestv-v-usloviyah-promyshlennogo-osvoeniya/viewer
+      </div>
+
+      <div class="source-item">Перспективы нефтедобычи в Тюменской области и ХМАО [Электронный ресурс] // Oil Resource :
+        аналитика. – 2 апр.
+        2025. – URL: https://oilresource.ru/press-releases/254/ [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">О территориях традиционного природопользования коренных малочисленных народов Севера,
+        Сибири и Дальнего Востока
+        Российской Федерации : Федеральный закон от 07.05.2001 № 49-ФЗ (с изм. и доп.) [Электронный ресурс] // ГАРАНТ :
+        информационно-правовое обеспечение. – URL: https://base.garant.ru/12122856/ [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Статья на портале о коренных народах 2 095 детей в Югре изучают язык ханты и манси в
+        детсадах, школах и кружках
+        [Электронный ресурс] // Indigenous Russia : портал о коренных народах России. – 11 окт. 2021. – Режим доступа:
+        https://indigenous-russia.com/archives/16794 [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Ненецкий язык [Электронный ресурс] // Pronao. – URL:
+        https://pronao.ru/blog/nenetskiy-yazyk/ [дата обращения:
+        11.04.2026].</div>
+
+      <div class="source-item">Муратова А. Арктика празднует День оленевода от Кольского полуострова до Чукотки. Почему
+        этот праздник — больше
+        чем традиция? [Электронный ресурс] // Лента.ру. – 09 апр. 2026. – URL:
+        https://lenta.ru/articles/2026/04/09/arktika-prazdnuet-den-olenevoda-ot-kolskogo-poluostrova-do-chukotki/ [дата
+        обращения: 11.04.2026].</div>
+
+      <div class="source-item">Общественная организация «Спасение Югры» Ханты-Мансийского автономного округа
+        [Электронный ресурс] // РАИПОН. –
+        URL:
+        https://raipon.info/regiony/obshchestvennaya-organizatsiya-spasenie-yugry-khanty-mansiyskogo-avtonomnogo-okruga/
+        [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Ассоциация коренных малочисленных народов Севера, Сибири и Дальнего Востока Российской
+        Федерации [Электронный
+        ресурс] // Арктический совет : постоянные участники. – URL:
+        https://arctic-council.org/ru/about/permanent-participants/raipon/ [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Росприроднадзор оценил ущерб от аварии на трубопроводе «СибурТюменьГаза» в ₽284 млн
+        [Электронный ресурс] //
+        НАНГС. – 3 июня 2021. – URL:
+        https://nangs.org/news/downstream/gasprocessing/rosprirodnadzor-otsenil-ushterb-otavarii-natruboprovode-siburtyumenygaza-v284-mln
+        [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Росприроднадзор включил пожар СИБУРа в ХМАО в список крупнейших аварий 2021 года
+        [Электронный ресурс] //
+        Муксун.фм. – 17 февр. 2022. – URL:
+        https://muksun.fm/news/2022-02-17/rosprirodnadzor-vklyuchil-pozhar-sibura-v-hmao-v-spisok-krupneyshih-avariy-2021-goda-461025
+        [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Медвежьи игрища: обряд северных хантов [Электронный ресурс] // Living Heritage :
+        культурные бренды ХМАО–Югры. –
+        URL:
+        https://livingheritage.ru/brand/hanty-mansijskij-avtonomnyj-okrug-yugra/medvezhi-igrishha-obryad-severnyh-hantov
+        [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Богданова Г. С. Влияние нефтегазовой промышленности на ихтиофауну акватории
+        Обско-Тазовского бассейна
+        //Российская Арктика. – 2020. – №. Спецвыпуск. – С. 27-31.</div>
+
+      <div class="source-item">Wurm S. A. et al. Atlas of the World’s Languages in Danger of Disappearing. – Unesco
+        Publishing, 2001.</div>
+
+      <div class="source-item">Осторожно, взрывоопасно! [Электронный ресурс] // Гриниум : энциклопедия экологии. – 15
+        марта 2024. – Режим
+        доступа: https://greenium.ru/11177/ [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">О Концепции устойчивого развития коренных малочисленных народов Севера, Сибири и Дальнего
+        Востока Российской
+        Федерации на период до 2036 года : распоряжение Правительства РФ от 08.05.2025 № 1161-р [Электронный ресурс] //
+        КонсультантПлюс : справочно-правовая система. – Режим доступа:
+        https://www.consultant.ru/document/cons_doc_LAW_504871/51b37cf0f49cf796c34811e9e811f2bed6554822/ [дата
+        обращения: 11.04.2026].</div>
+
+      <div class="source-item">Филиппова Н. А. Право на традиционное природопользование и особенности его реализации в
+        условиях ускоренного
+        социально-экономического развития Российской Арктики [Электронный ресурс] / Н. А. Филиппова, С. А. Мултанов //
+        Арктика 2035: актуальные вопросы, проблемы, решения. – 2024. – № 3 (19). – С. 4–15. – DOI:
+        10.51823/74670_2024_3_4. – Режим доступа: https://arctic2035.ru/n19-p4 [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Новостная статья (региональный портал) Галиев А. Тюменская слобода с разницей в 15 лет:
+        как изменился город на
+        спутниковых снимках [Электронный ресурс] / А. Галиев // 72.ру : Тюменский портал. – 07 сент. 2024. – Режим
+        доступа: https://72.ru/text/gorod/2024/09/07/74044325/ [дата обращения: 11.04.2026].</div>
+
+      <div class="source-item">Научно-популярная статья (тематический ресурс) Особенности сезонного распределения рыб в
+        Обской и Тазовской
+        губах [Электронный ресурс] // АрктикФиш : Сибирская рыба. – [б. д.]. – Раздел: Великая сибирская река Обь. –
+        Режим доступа: https://sibir.arktikfish.com/index.php/ob/133-osobennosti-sezonn [дата обращения: 11.04.2026].
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Виртуальный Музей</div>
+    <div class="footer-sub">Западная Сибирь · 1991–2022</div>
+    <div class="footer-links">
+      <a class="footer-link" href="excursion2.html" style="text-decoration:none;">← Экскурсия II</a>
+      <a class="footer-link" href="index.html" style="text-decoration:none;">Главная</a>
+    </div>
+  </footer>
+
+
+  <script>
+    (function () {
+      // Универсальный аудио-плеер с возможностью перемотки (клик/перетаскивание) и динамическим таймером
+      const demoFallbackSrc = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+
+      function formatTime(seconds) {
+        if (isNaN(seconds) || !isFinite(seconds)) return "00:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }
+
+      function initAudioPlayer(player) {
+        // находим или создаём audio элемент
+        let audio = player.querySelector('audio');
+        const audioInfo = player.querySelector('.audio-info');
+        if (!audio && audioInfo) {
+          audio = document.createElement('audio');
+          audio.preload = 'metadata';
+          audioInfo.appendChild(audio);
+        }
+        if (!audio) return;
+
+        // если у аудио нет src (пустой или не задан) — устанавливаем демо-трек
+        if (!audio.src || audio.src === '' || audio.src === window.location.href) {
+          audio.src = demoFallbackSrc;
+        }
+
+        // элементы управления
+        const playBtn = player.querySelector('.play-btn');
+        const progressBar = player.querySelector('.audio-bar');
+        const progressFill = player.querySelector('.audio-progress');
+        const timeDisplay = player.querySelector('.audio-time');
+
+        if (!playBtn || !progressBar || !progressFill || !timeDisplay) return;
+
+        // удаляем старые inline-обработчики, если были
+        playBtn.removeAttribute('onclick');
+
+        // обновление UI: прогресс и таймер
+        function updateUI() {
+          if (!audio.duration || isNaN(audio.duration)) {
+            progressFill.style.width = '0%';
+            timeDisplay.textContent = `00:00 / 00:00`;
+            return;
+          }
+          const percent = (audio.currentTime / audio.duration) * 100;
+          progressFill.style.width = percent + '%';
+          timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        }
+
+        // переключение иконки play/pause
+        function setPlayIcon(playing) {
+          const icon = playBtn.querySelector('.play-icon');
+          if (!icon) return;
+          if (playing) {
+            icon.style.cssText = 'width:4px;height:14px;background:var(--ink);box-shadow:6px 0 0 var(--ink);margin-left:2px';
+          } else {
+            icon.style.cssText = 'width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:12px solid var(--ink);margin-left:2px';
+          }
+        }
+
+        // события аудио
+        audio.addEventListener('loadedmetadata', updateUI);
+        audio.addEventListener('timeupdate', updateUI);
+        audio.addEventListener('play', () => setPlayIcon(true));
+        audio.addEventListener('pause', () => setPlayIcon(false));
+        audio.addEventListener('ended', () => {
+          setPlayIcon(false);
+          updateUI();
+        });
+        audio.addEventListener('error', () => {
+          // если источник недоступен и ещё не заменяли на fallback, пробуем заменить
+          if (!audio.src.includes('soundhelix') && !audio.src.startsWith('blob')) {
+            audio.src = demoFallbackSrc;
+            audio.load();
+          }
+        });
+
+        // клик по play/pause
+        playBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (audio.paused) {
+            audio.play().catch(err => console.warn('Playback error:', err));
+          } else {
+            audio.pause();
+          }
+        });
+
+        // перемотка: клик по прогресс-бару
+        function seekFromEvent(clientX, rect) {
+          if (!audio.duration || isNaN(audio.duration)) return;
+          let offsetX = clientX - rect.left;
+          let percent = Math.min(1, Math.max(0, offsetX / rect.width));
+          audio.currentTime = percent * audio.duration;
+          updateUI();
+        }
+
+        progressBar.addEventListener('click', (e) => {
+          const rect = progressBar.getBoundingClientRect();
+          seekFromEvent(e.clientX, rect);
+        });
+
+        // drag (перетаскивание) для перемотки
+        let isDragging = false;
+        const onMouseMove = (e) => {
+          if (!isDragging) return;
+          const rect = progressBar.getBoundingClientRect();
+          seekFromEvent(e.clientX, rect);
+          e.preventDefault();
+        };
+        const onMouseUp = () => {
+          isDragging = false;
+          window.removeEventListener('mousemove', onMouseMove);
+          window.removeEventListener('mouseup', onMouseUp);
+        };
+        progressBar.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          const rect = progressBar.getBoundingClientRect();
+          seekFromEvent(e.clientX, rect);
+          window.addEventListener('mousemove', onMouseMove);
+          window.addEventListener('mouseup', onMouseUp);
+          e.preventDefault();
+        });
+
+        // touch-события для мобильных
+        progressBar.addEventListener('touchstart', (e) => {
+          isDragging = true;
+          const touch = e.touches[0];
+          const rect = progressBar.getBoundingClientRect();
+          seekFromEvent(touch.clientX, rect);
+          window.addEventListener('touchmove', onMouseMove);
+          window.addEventListener('touchend', onMouseUp);
+          e.preventDefault();
+        });
+
+        // начальное состояние
+        updateUI();
+        setPlayIcon(false);
+        // принудительно загружаем метаданные, если аудио еще не готово
+        if (audio.readyState === 0) {
+          audio.load();
+        }
+      }
+
+      // инициализация всех .audio-player после загрузки DOM
+      document.addEventListener('DOMContentLoaded', () => {
+        const players = document.querySelectorAll('.audio-player');
+        players.forEach(player => initAudioPlayer(player));
+      });
+    })();
+  </script>
+</body>
+
+</html>
