@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Виртуальный Музей — Западная Сибирь (1991–2022)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-dark: #8B6914;
+      --ink: #1A1208;
+      --cream: #F5F0E8;
+      --parchment: #EDE4D0;
+      --steel: #2C3E50;
+      --birch: #F8F4EC;
+      --taiga: #2D4A3E;
+      --snow: #FAFAF8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--birch);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ─── PAGE SYSTEM ─── */
+    .page {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(26, 18, 8, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gold-dark);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      line-height: 1.2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .nav-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: rgba(201, 168, 76, 0.7);
+      text-transform: uppercase;
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      background: none;
+      border-radius: 2px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold);
+      border-color: rgba(201, 168, 76, 0.3);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0d0d08 0%, #1a1810 40%, #2d2418 70%, #1a1208 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-ornament {
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5em;
+      animation: fadeSlideDown 1.2s ease both;
+    }
+
+    .hero-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: rgba(201, 168, 76, 0.6);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeSlideDown 1.2s 0.1s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.05;
+      animation: fadeSlideDown 1.2s 0.2s ease both;
+    }
+
+    .hero-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245, 240, 232, 0.65);
+      margin-top: 1.5rem;
+      max-width: 600px;
+      line-height: 1.6;
+      animation: fadeSlideDown 1.2s 0.35s ease both;
+    }
+
+    .hero-divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 2.5rem auto;
+      animation: fadeIn 1.5s 0.5s ease both;
+    }
+
+    .hero-dates {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      opacity: 0.8;
+      letter-spacing: 0.1em;
+      animation: fadeIn 1.5s 0.6s ease both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(201, 168, 76, 0.5);
+      text-transform: uppercase;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── SECTION ─── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title em {
+      color: var(--gold-dark);
+      font-style: italic;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    p.body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.85;
+      color: #2a1f10;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── ALTERNATING BAND ─── */
+    .band {
+      background: var(--parchment);
+    }
+
+    .band-dark {
+      background: var(--taiga);
+    }
+
+    .band-dark .section-label {
+      color: rgba(201, 168, 76, 0.6);
+    }
+
+    .band-dark .section-title {
+      color: var(--cream);
+    }
+
+    .band-dark .section-title em {
+      color: var(--gold-light);
+    }
+
+    .band-dark p.body-text {
+      color: rgba(245, 240, 232, 0.8);
+    }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: var(--ink);
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 180px;
+      max-width: 240px;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--gold);
+      display: block;
+    }
+
+    .stat-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.5);
+      margin-top: 0.4rem;
+    }
+
+    /* ─── EXCURSION CARDS ─── */
+    .excursions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      background: var(--gold-dark);
+      border: 1px solid var(--gold-dark);
+      margin: 0 0 0;
+    }
+
+    .exc-card {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      cursor: pointer;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+    }
+
+    .exc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .exc-card:hover {
+      background: #221a08;
+    }
+
+    .exc-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .exc-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 3rem;
+      color: rgba(201, 168, 76, 0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .exc-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.55);
+      margin-bottom: 0.8rem;
+    }
+
+    .exc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .exc-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      color: rgba(245, 240, 232, 0.5);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .exc-cta {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .exc-cta::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .exc-card:hover .exc-cta::after {
+      transform: translateX(4px);
+    }
+
+    /* ─── MAP PLACEHOLDER ─── */
+    .map-placeholder {
+      background: #1a2a22;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(201, 168, 76, 0.4);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* SVG map dots */
+    .map-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── EXCURSION PAGE ─── */
+    .exc-page-hero {
+      min-height: 50vh;
+      background: linear-gradient(160deg, #0d0d08 0%, #1a1810 50%, #2d2418 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 100px 2rem 3rem;
+    }
+
+    .exc-page-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .back-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.6);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      background: none;
+      border: none;
+    }
+
+    .back-link:hover {
+      color: var(--gold);
+    }
+
+    .exc-page-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 5rem;
+      color: rgba(201, 168, 76, 0.08);
+      line-height: 1;
+      display: block;
+      margin-bottom: -1rem;
+    }
+
+    .exc-page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .exc-page-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(245, 240, 232, 0.6);
+      line-height: 1.6;
+    }
+
+    .exc-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .exc-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--gold-dark);
+      border-bottom: 1px solid var(--gold-dark);
+      margin-bottom: 3rem;
+    }
+
+    .exc-meta-item {}
+
+    .exc-meta-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .exc-meta-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+
+    .guide-block {
+      background: var(--parchment);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: #2a1f10;
+      position: relative;
+    }
+
+    .guide-block::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      left: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--gold-light);
+      line-height: 1;
+      opacity: 0.4;
+    }
+
+    .subtopic {
+      margin: 2.5rem 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .subtopic-num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtopic-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .audio-player {
+      background: var(--ink);
+      border-radius: 4px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .play-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+
+    .play-btn:hover {
+      opacity: 0.8;
+    }
+
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 12px solid var(--ink);
+      margin-left: 2px;
+    }
+
+    .audio-info {
+      flex: 1;
+    }
+
+    .audio-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .audio-bar {
+      height: 2px;
+      background: rgba(201, 168, 76, 0.2);
+      margin-top: 0.5rem;
+      border-radius: 2px;
+    }
+
+    .audio-progress {
+      height: 100%;
+      background: var(--gold);
+      width: 0%;
+      border-radius: 2px;
+    }
+
+    .audio-time {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      color: rgba(201, 168, 76, 0.5);
+      margin-top: 0.3rem;
+    }
+
+    .task-box {
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 2px;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
+    }
+
+    .task-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .task-label::before {
+      content: '★';
+      font-size: 0.7rem;
+    }
+
+    .task-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: #2a1f10;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .task-item::before {
+      content: counter(task-c) '.';
+      counter-increment: task-c;
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+    }
+
+    .task-list {
+      counter-reset: task-c;
+    }
+
+    .sources-section {
+      background: var(--parchment);
+      padding: 2rem 2rem;
+      border-top: 2px solid var(--gold-dark);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .sources-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1.2rem;
+    }
+
+    .source-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      color: #3a2e1e;
+      line-height: 1.5;
+      margin-bottom: 0.7rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .source-item::before {
+      content: counter(src-c) '.';
+      counter-increment: src-c;
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+
+    .sources-list {
+      counter-reset: src-c;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-sub {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.5);
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--gold);
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(245, 240, 232, 0.2);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+      }
+    }
+
+    /* Timeline */
+    .timeline {
+      margin: 2rem 0;
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .tl-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      min-width: 55px;
+      padding-top: 0.1rem;
+    }
+
+    .tl-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #2a1f10;
+    }
+
+    .placeholder-img {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #1a2a22 0%, #2d3a2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(201, 168, 76, 0.35);
+    }
+
+    .highlight-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold-dark);
+      line-height: 1.5;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      margin: 2.5rem 0;
+    }
+
+
+    /* ─── IMAGE SLIDER ─── */
+    .img-slider {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 2px;
+    }
+
+    .img-slider img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+
+    .img-slider img.active {
+      opacity: 1;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .slider-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(245, 240, 232, 0.4);
+      border: 1px solid rgba(201, 168, 76, 0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .slider-dot.active {
+      background: var(--gold);
+    }
+
+    .slider-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 1rem 1.8rem;
+      background: linear-gradient(transparent, rgba(26, 18, 8, 0.75));
+      font-family: "Raleway", sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.75);
+      z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-link {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.6rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .excursions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-strip {
+        flex-direction: column;
+      }
+
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html" style="text-decoration:none;">
+      Виртуальный Музей<br /><span
+        style="font-size:0.7rem;color:rgba(201,168,76,0.45);font-family:'Raleway',sans-serif;font-style:normal;letter-spacing:0.12em">Западная
+        Сибирь</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link active" href="index.html" style="text-decoration:none;">Главная</a>
+      <a class="nav-link" href="excursion1.html" style="text-decoration:none;">Экскурсия I</a>
+      <a class="nav-link" href="excursion2.html" style="text-decoration:none;">Экскурсия II</a>
+      <a class="nav-link" href="excursion3.html" style="text-decoration:none;">Экскурсия III</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-ornament">✦ ✦ ✦</div>
+    <div class="hero-label">Виртуальный Музей · Современная Российская Федерация</div>
+    <h1 class="hero-title">Западная<br /><em>Сибирь</em></h1>
+    <p class="hero-subtitle">Земля контрастов: от советского наследия к новой России — история, природа и
+      трансформация региона</p>
+    <div class="hero-divider"></div>
+    <div class="hero-dates">1991 — 2022</div>
+    <div class="hero-scroll">↓   прокрутите вниз</div>
+  </div>
+  <!-- ABOUT MUSEUM -->
+  <section>
+    <div class="section-label">О музее</div>
+    <h2 class="section-title">Миссия и<br /><em>концепция</em></h2>
+    <div class="section-divider"></div>
+    <p class="body-text">
+      Добро пожаловать в виртуальный музей, посвящённый Западной Сибири в эпоху современной Российской Федерации — с
+      1991 по 2022 год. Наш музей — это цифровое пространство для изучения истории, культуры, экономики и природы
+      одного из самых значимых регионов России.
+    </p>
+    <p class="body-text">
+      Музей предлагает три тематические экскурсии, каждая из которых раскрывает отдельный аспект жизни региона:
+      экономическое развитие, экологические проблемы и этнокультурное наследие коренных народов. Каждая экскурсия
+      сопровождается текстом экскурсовода, визуальными материалами и учебными заданиями.
+    </p>
+    <p class="body-text">
+      <em>Период охвата:</em> 1991–2022 гг.  ·  <em>Регион:</em> Западная Сибирь (Тюменская, Омская, Томская
+      области, ХМАО, ЯНАО, Кузбасс, Новосибирская область)  ·  <em>Формат:</em> аудио-экскурсии с текстовым
+      сопровождением.
+    </p>
+  </section>
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat">
+      <span class="stat-num">2,4 млн</span>
+      <span class="stat-label">км² площадь региона</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">~15 млн</span>
+      <span class="stat-label">жителей (2020)</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">~60%</span>
+      <span class="stat-label">нефти России</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <span class="stat-label">экскурсии в музее</span>
+    </div>
+  </div>
+  <!-- REGION OVERVIEW -->
+  <div class="band">
+    <section>
+      <div class="section-label">Регион</div>
+      <h2 class="section-title">Западная Сибирь:<br /><em>общий облик</em></h2>
+      <div class="section-divider"></div>
+      <img src='/images/Vasyugan.jpg' alt='Васюганские болота' style="width:100%;border-radius:4px;margin:1.5rem 0;">
+
+      <span style="font-size:0.8rem;opacity:0.6;">(https://upload.wikimedia.org/wikipedia/commons/2/2d/Vasyugan.jpg)
+      </span>
+      <p class="body-text">
+        Западная Сибирь — один из крупнейших природных и экономических регионов России, простирающийся от Уральских
+        гор на западе до реки Енисей на востоке, от Северного Ледовитого океана на севере до казахстанских степей на
+        юге. Эта огромная территория охватывает несколько природных зон: арктические тундры, таёжные леса, болотистые
+        равнины и степи.
+      </p>
+      <p class="body-text">
+        Регион является стратегическим для всей российской экономики: здесь сосредоточено более половины разведанных
+        запасов нефти страны и значительная часть природного газа. Такие города, как Тюмень, Сургут, Нижневартовск и
+        Ноябрьск, стали символами нефтяного бума, преобразившего облик Сибири в советское и постсоветское время.
+      </p>
+      <!-- Timeline -->
+      <div style="margin-top: 2.5rem;">
+        <div class="section-label">Ключевые даты</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-year">1991</span>
+            <span class="tl-text">Распад СССР. Западная Сибирь входит в состав новой Российской Федерации. Начало
+              экономической трансформации и приватизации нефтяной промышленности.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-year">1993</span>
+            <span class="tl-text">Принятие новой Конституции РФ. Укрепление федерализма. Ханты-Мансийский и
+              Ямало-Ненецкий автономные округа получают статус субъектов федерации.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-year">1998</span>
+            <span class="tl-text">Финансовый кризис в России. Резкое падение цен на нефть болезненно ударяет по
+              экономике Западной Сибири.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-year">2000-е</span>
+            <span class="tl-text">Рост нефтяных доходов при Путине. Активное освоение новых месторождений. Бурный рост
+              Тюмени и нефтяных городов.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-year">2010-е</span>
+            <span class="tl-text">Экологические вызовы: загрязнение рек нефтью, деградация традиционных угодий
+              коренных народов. Принятие законодательства о КМНС.</span>
+          </div>
+          <div class="tl-item">
+            <span class="tl-year">2022</span>
+            <span class="tl-text">Западные санкции против России затрагивают нефтяную отрасль. Начало нового периода
+              трансформации экономики региона.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- MAP PLACEHOLDER -->
+  <section>
+    <div class="section-label">География</div>
+    <h2 class="section-title">Карта<br /><em>региона</em></h2>
+    <div class="section-divider"></div>
+    <img src='/images/main/Map1.png' alt='Нефтяной разлив в Сибири'
+      style="width:100%;border-radius:4px;margin:1.5rem 0;">
+
+    <span style="font-size:0.8rem;opacity:0.6;">Тюмень · Сургут · Ханты-Мансийск · Ноябрьск · Омск · Кузбасс · Томск ·
+      Новосибирск</span>
+    </div>
+    <img src='/images/main/Западно-Сибирский_экономический_район.png' alt='Нефтяной разлив в Сибири'
+      style="height: 50%; width: 100%; border-radius: 4px; margin: 1.5rem 0;">
+
+    </div>
+    <p class="body-text">
+      На карте выделены ключевые субъекты: Тюменская область с ХМАО и ЯНАО — нефтегазовое сердце России; Омская и
+      Новосибирская области — промышленные и аграрные центры юга; Томская область — научный и образовательный кластер.
+    </p>
+  </section>
+  <!-- EXCURSIONS SECTION -->
+  <div style="background:var(--ink);padding:3rem 2rem 0;">
+    <div style="max-width:860px;margin:0 auto;">
+      <div class="section-label" style="color:rgba(201,168,76,0.55);">Экскурсионные программы</div>
+      <h2 class="section-title" style="color:var(--cream);">Три маршрута<br /><em style="color:var(--gold-light);">через
+          историю</em></h2>
+      <div class="section-divider"></div>
+    </div>
+  </div>
+  <div class="excursions-grid">
+    <a class="exc-card" href="excursion1.html" style="text-decoration:none;">
+      <span class="exc-num">I</span>
+      <div class="exc-label">Экскурсия первая</div>
+      <div class="exc-title">Нефть и власть: экономическое чудо Западной Сибири</div>
+      <div class="exc-desc">От советских скважин к олигархам и государственным корпорациям — как углеводороды
+        определили судьбу региона.</div>
+      <span class="exc-cta">Начать экскурсию</span>
+    </a>
+    <a class="exc-card" href="excursion2.html" style="text-decoration:none;">
+      <span class="exc-num">II</span>
+      <div class="exc-label">Экскурсия вторая</div>
+      <div class="exc-title">Экология на краю: природа Сибири под давлением</div>
+      <div class="exc-desc">Болота, реки и тайга под угрозой — экологические последствия нефтедобычи и пути к
+        устойчивому развитию.</div>
+      <span class="exc-cta">Начать экскурсию</span>
+    </a>
+    <a class="exc-card" href="excursion3.html" style="text-decoration:none;">
+      <span class="exc-num">III</span>
+      <div class="exc-label">Экскурсия третья</div>
+      <div class="exc-title">Коренные народы: ханты, ненцы и XXI век</div>
+      <div class="exc-desc">Традиция и современность: как малые народы Сибири сохраняют идентичность в эпоху
+        глобализации и нефтяного освоения.</div>
+      <span class="exc-cta">Начать экскурсию</span>
+    </a>
+  </div>
+  <!-- MODERN STATUS -->
+  <div class="band-dark">
+    <section>
+      <div class="section-label">Современное состояние</div>
+      <h2 class="section-title">Западная Сибирь<br /><em>сегодня</em></h2>
+      <div class="section-divider"></div>
+      <p class="body-text">
+        К началу 2020-х годов Западная Сибирь остаётся важнейшим экономическим регионом России. Нефтяные доходы
+        по-прежнему формируют значительную часть федерального бюджета, хотя многие эксперты указывают на необходимость
+        диверсификации экономики региона и снижения зависимости от углеводородов.
+      </p>
+      <p class="body-text">
+        Социальное развитие территорий неравномерно: богатые нефтью автономные округа имеют высокий уровень жизни,
+        тогда как отдалённые районы сталкиваются с оттоком населения и деградацией инфраструктуры. Экологические
+        проблемы, связанные с нефтедобычей, требуют системного решения.
+      </p>
+      <div class="highlight-quote" style="border-color:rgba(201,168,76,0.2);color:var(--gold-light);">
+        «Сибирь — это не окраина России, это её сердце»
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="footer-logo">Виртуальный Музей</div>
+    <div class="footer-sub">Западная Сибирь · Современная Российская Федерация · 1991–2022</div>
+    <div class="footer-links">
+      <a class="footer-link" href="index.html" style="text-decoration:none;">Главная</a>
+      <a class="footer-link" href="excursion1.html" style="text-decoration:none;">Экскурсия I</a>
+      <a class="footer-link" href="excursion2.html" style="text-decoration:none;">Экскурсия II</a>
+      <a class="footer-link" href="excursion3.html" style="text-decoration:none;">Экскурсия III</a>
+    </div>
+    <div class="footer-note">Учебный проект · Курс русской истории</div>
+  </footer>
+
+
+  <script>
+    function togglePlay(btn) {
+      const icon = btn.querySelector('.play-icon');
+      const isPlaying = btn.dataset.playing === 'true';
+      if (isPlaying) {
+        icon.style.cssText = 'width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:12px solid var(--ink);margin-left:2px';
+        btn.dataset.playing = 'false';
+      } else {
+        icon.style.cssText = 'width:4px;height:14px;background:var(--ink);box-shadow:6px 0 0 var(--ink);margin-left:2px';
+        btn.dataset.playing = 'true';
+        const progress = btn.closest('.audio-player')?.querySelector('.audio-progress');
+        if (progress) {
+          let w = parseFloat(progress.style.width) || 0;
+          const interval = setInterval(() => {
+            if (btn.dataset.playing !== 'true') { clearInterval(interval); return; }
+            w = Math.min(w + 0.1, 100);
+            progress.style.width = w + '%';
+            if (w >= 100) clearInterval(interval);
+          }, 200);
+        }
+      }
+    }
+
+    document.querySelectorAll('.img-slider').forEach(slider => {
+      const imgs = slider.querySelectorAll('img');
+      const dots = slider.querySelectorAll('.slider-dot');
+      if (!imgs.length || !dots.length) return;
+      let cur = 0;
+      imgs.forEach((img, i) => img.classList.toggle('active', i === 0));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === 0));
+      function go(n) {
+        imgs[cur]?.classList.remove('active');
+        dots[cur]?.classList.remove('active');
+        cur = n % imgs.length;
+        imgs[cur]?.classList.add('active');
+        dots[cur]?.classList.add('active');
+      }
+      let timer = setInterval(() => go(cur + 1), 4000);
+      dots.forEach((d, i) => d.addEventListener('click', () => {
+        clearInterval(timer);
+        go(i);
+        timer = setInterval(() => go(cur + 1), 4000);
+      }));
+    });
+  </script>
+</body>
+
+</html>
